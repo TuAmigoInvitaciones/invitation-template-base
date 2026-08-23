@@ -6,7 +6,10 @@ import { LinkIcon } from '@phosphor-icons/react'
 export const RsvpSection: React.FC = () => {
     const navigate = useNavigate()
     const { ticket } = useTicket()
-    const { sections } = useInvitationConfig()
+    const { config, sections } = useInvitationConfig()
+
+    const showTicketSystem = Boolean(config?.hasTicketingSystem || sections?.ticket?.showTicket)
+    if (!showTicketSystem) return null
 
     const guestName = ticket?.name || ''
     const eventDate = sections.hero?.date || ''

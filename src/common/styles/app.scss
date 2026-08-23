@@ -40,3 +40,12 @@
 // Invitation Search & Ticket
 @use '../../modules/search/search';
 @use '../../modules/ticket/ticket';
+
+// Scratch & VIP Addons Sections
+
+@use '../../modules/invitation/addons/lodging-weather/lodging-weather';
+@use '../../modules/invitation/addons/our-story/our-story';
+@use '../../modules/invitation/addons/faq-menu/faq-menu';
+@use '../../modules/invitation/addons/guest-photos/guest-photos';
+@use '../../modules/invitation/addons/monogram/monogram';
+@use '../../modules/invitation/addons/scratch-card/scratch-card';
