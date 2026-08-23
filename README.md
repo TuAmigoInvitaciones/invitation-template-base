@@ -1,115 +1,94 @@
-# 📖 Guía Paso a Paso y Documentación del Proyecto
+# TuAmigoInvitaciones — Sistema de Plantillas & Wizard CLI
 
-Bienvenido al sistema de plantillas de invitaciones. Esta guía detalla **paso a paso** todo lo necesario para personalizar, estructurar y publicar una invitación de eventos con máxima calidad visual.
+![NodeJS](https://img.shields.io/badge/Node.js-v18%2B-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-v18-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-v5-646CFF?style=flat-square&logo=vite&logoColor=white)
+![Sass](https://img.shields.io/badge/Sass-SCSS-CC6699?style=flat-square&logo=sass&logoColor=white)
+![Plataforma](https://img.shields.io/badge/Abrasa-RSVP%20Sync-ff4500?style=flat-square)
 
----
-
-## 🧭 Índice de Componentes y Guías
-
-- [🎨 1. Configuración de Temas (Fuentes y Colores)](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/doc/theme-configuration.md)
-- [🧩 2. Componente de Botones (`Button`)](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/doc/button.md)
-- [🍔 3. Menú de Navegación (`Menu` & `MenuSidebar`)](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/doc/menu.md)
-- [🎵 4. Reproductor de Música (`MusicPlayer`)](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/doc/music-player.md)
-- [🏷️ 5. Encabezados de Sección (`SectionHeader`)](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/doc/section-header.md)
-- [🎠 6. Carrusel y Tarjetas (`Carousel` & `CarouselCard`)](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/doc/carousel.md)
-- [🖼️ 7. Sistema de Modales (`Modal` & `useModal`)](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/doc/modal.md)
-- [🔔 8. Notificaciones Toast (`Sonner` & `useToast`)](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/doc/toast.md)
+Plataforma profesional de maquetación, configuración y generación de **Invitaciones Digitales Interactivas** para Bodas, XV Años, Graduaciones y Fiestas Infantiles.
 
 ---
 
-## 🛠️ Guía Paso a Paso para Construir una Invitación
+## Características Principales
 
-### 📌 Paso 1: Configurar Fuentes y Colores del Evento
-1. Abre el archivo [theme.config.json](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/theme.config.json) en la raíz del proyecto.
-2. Elige el paquete de fuentes deseado (`"fontPack": 1` al `5`) y la paleta de colores (`"palette": 1` al `8`).
-3. Guarda el archivo o ejecuta en la terminal:
-   ```bash
-   node scripts/set-theme.js 1 2
-   ```
-4. Las fuentes y la gama cromática se sincronizan automáticamente en toda la aplicación.
-
----
-
-### 📌 Paso 2: Configurar la Navegación (`Menu`)
-1. Abre [InvitationApp.tsx](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/src/InvitationApp.tsx).
-2. Elige entre las dos variantes disponibles:
-   - **`variant="floating"`**: Botón redondo flotante en la esquina superior izquierda.
-   - **`variant="bar"`**: Barra fija superior a todo el ancho.
-3. Asigna la variante de color del botón si deseas personalizarla (`buttonVariant="secondary"`, `buttonVariant="tertiary"`, etc.):
-   ```tsx
-   <Menu variant="floating" buttonVariant="primary" />
-   ```
-4. Define los enlaces e ítems del menú pasando la prop `items`.
+* **Wizard CLI Interactivo (`npm run create`)**: Generador modular paso a paso para orquestar carpetas de invitaciones listas para producción en `C:\TuAmigoInvitaciones\Paquetes\`.
+* **Estructura Comercial Espejo por Piedras Preciosas**: 2 Líneas de Producto (**Sin Fotos** vs **Con Fotos**) con los paquetes **Bronce**, **Platino**, **Oro**, **Rubí**, **Esmeralda** y **Cuarzo**.
+* **Manifiesto Dinámico (`invitation.config.json`)**: Control centralizado de flags de secciones, colores, fuentes tipográficas y configuración del evento.
+* **Experiencias Interactivas VIP**:
+  * **Scratch Reveal (Rascable)** en portada.
+  * **Álbum QR de Invitados** para recolección de fotografías durante la fiesta.
+  * **Monograma Exclusivo** personalizado.
+  * **Botonera Save The Date** integrada con Google/Apple Calendar.
+  * **Gestión RSVP en tiempo real con Plataforma Abrasa**.
 
 ---
 
-### 📌 Paso 3: Configurar la Música de Fondo (`MusicPlayer`)
-1. Agrega tu archivo de audio MP3 en `src/assets/music/`.
-2. En [InvitationApp.tsx](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/src/InvitationApp.tsx) o en tu vista de invitación, monta el reproductor:
-   - **Variante Flotante**:
-     ```tsx
-     <MusicPlayer variant="floating" buttonVariant="primary" />
-     ```
-   - **Variante Caja (Card)**:
-     ```tsx
-     <MusicPlayer variant="card" songTitle="Canción Principal" artistName="María & Carlos" />
-     ```
+## Ficha Comercial de Paquetes
+
+La oferta comercial se organiza en 2 variantes (Línea Sin Fotos y Línea Con Fotos), manteniendo idéntica estructura y contenido logístico por nivel de servicio:
+
+| Paquete | Concepto Comercial | Línea SIN Fotos | Línea CON Fotos | Secciones Clave Incluidas |
+| :--- | :--- | :---: | :---: | :--- |
+| **Bronce** | **Esencial** | **$499.99 MXN** | **$699.99 MXN** | Portada, Sobre Digital, Conteo, Save The Date, Mapas GPS, Itinerario, Dress Code y RSVP WhatsApp. |
+| **Platino** | **Intermedio** *(Más Vendido)* | **$699.99 MXN** | **$899.99 MXN** | Todo lo de Bronce + Familia & Cortejo + Mesa de Regalos + Hashtag & Despedida + Plataforma Abrasa + Galería (Con Fotos). |
+| **Oro** | **VIP Premium** | **$899.99 MXN** | **$1,099.99 MXN** | Todo lo de Platino + Sobre de Lujo + Scratch Reveal + Álbum QR de Fotos + Monograma Exclusivo + Abrasa Pro. |
+| **Rubí** | **A la Medida** | **$1,599.00 MXN** | **$1,899.00 MXN** | Maquetación gráfica 100% creada desde cero fuera de catálogo. |
+| **Esmeralda** | **Infantil Básica** | **$199.99 MXN** | — | Diseño temático, mapas GPS y confirmación rápida WhatsApp. |
+| **Cuarzo** | **Infantil Premium** | **$399.99 MXN** | — | Animaciones, música, Scratch Reveal, galería de fotos y RSVP Abrasa. |
 
 ---
 
-### 📌 Paso 4: Estructurar las Secciones (`SectionHeader`)
-1. En tu archivo [Invitation.tsx](file:///c:/Users/roman/OneDrive/Escritorio/proyectos-desarrollo/invitaciones/invitation-template/src/modules/invitation/Invitation.tsx), utiliza `<SectionHeader />` para encabezar cada sección (Ubicación, Regalos, Itinerario, RSVP):
-   ```tsx
-   <SectionHeader
-       icon={<MapPinIcon size={24} weight="duotone" />}
-       pretitle="Dónde & Cuándo"
-       title="Ubicación del Evento"
-       subtitle="Jardín de las Rosas, Av. de la Paz #120"
-       align="center"
-   />
-   ```
+## Guía Rápida de Comandos
+
+### 1. Generar una Nueva Invitación
+Ejecuta el asistente interactivo en la terminal:
+```bash
+npm run create
+```
+El wizard solicitará el tipo de evento, paquete comercial, fuentes, paleta de colores, datos del festejo, ubicaciones, itinerario y mesa de regalos, compilando automáticamente el proyecto listo en `C:\TuAmigoInvitaciones\Paquetes\<nombre-invitacion>`.
+
+### 2. Iniciar Servidor de Desarrollo Local
+Para visualizar la invitación en tiempo real con recarga caliente (Vite + React):
+```bash
+npm run dev
+```
+
+### 3. Sincronizar Tokens SCSS de Tema
+Para compilar los tokens de colores y fuentes definidos en `invitation.config.json`:
+```bash
+npm run theme:sync
+```
+
+### 4. Optimización Recursiva de Imágenes
+Para comprimir todas las imágenes manteniendo la calidad en `src/assets/images/`:
+```bash
+npm run images:optimize
+```
 
 ---
 
-### 📌 Paso 5: Mostrar Galerías o Historia de la Pareja (`Carousel`)
-1. Utiliza el componente `<Carousel />` para presentar galerías de fotos o cronología de momentos:
-   ```tsx
-   <Carousel items={memoryCards} effect="slide" buttonVariant="primary" />
-   ```
-2. O para galerías de fotos puras:
-   ```tsx
-   <Carousel images={galleryImages} effect="coverflow" buttonVariant="primary" />
-   ```
+## Arquitectura del Proyecto
+
+```text
+invitation-template/
+├── doc/
+│   └── paquetes_invitaciones.md     # Ficha técnica comercial oficial y mapa conceptual
+├── scripts/
+│   ├── create-invitation.js         # Script orquestador principal
+│   ├── sync-theme.js                # Compilador de tokens SCSS
+│   ├── optimize-images.js           # Optimizador recursivo de imágenes
+│   └── wizard/                      # Módulos del asistente CLI (Pasos 0 a 10)
+├── src/
+│   ├── modules/                     # Módulos React (Hero, Places, Itinerary, RSVP, Gallery)
+│   ├── styles/                      # Sistema de diseño SCSS y tokens croma
+│   └── InvitationApp.tsx            # Componente raíz reactivo
+├── invitation.config.json           # Manifiesto activo de configuración
+└── package.json
+```
 
 ---
 
-### 📌 Paso 6: Agregar Botones e Interacciones con Modales y Toasts
-1. Usa el componente `<Button>` configurando variantes (`primary`, `secondary`, `outline`, `glass`) y radios (`radius="none"`, `radius="full"`).
-2. Para abrir un modal (ejemplo: RSVP o Regalos):
-   ```tsx
-   import { useModal } from '@/common/hooks';
-   import { MODAL_NAMES } from '@/store/ui/modal.slice';
+## Documentación Adicional
 
-   const { onOpenModal } = useModal();
-   
-   <Button onClick={() => onOpenModal(MODAL_NAMES.RSVP, 'Confirmar Asistencia')}>
-       Confirmar Asistencia
-   </Button>
-   ```
-3. Para mostrar notificaciones Toast:
-   ```tsx
-   import { useToast } from '@/common/hooks';
-
-   const { showSuccess } = useToast();
-   showSuccess('¡Asistencia confirmada exitosamente!');
-   ```
-
----
-
-### 📌 Paso 7: Optimizar Imágenes del Proyecto
-1. Coloca tus imágenes en `src/assets/images/`.
-2. Ejecuta el script de optimización recursivo en la terminal:
-   ```bash
-   node scripts/optimize-images.js
-   ```
-3. El script comprimirá recursivamente todas las imágenes y subcarpetas manteniendo la estructura intacta.
+Para consultar la ficha técnica comercial completa y mapas de jerarquía, revisa [`doc/paquetes_invitaciones.md`](file:///c:/TuAmigoInvitaciones/invitation-template/doc/paquetes_invitaciones.md).
