@@ -408,6 +408,14 @@ async function main() {
     const configPath = path.join(targetPath, 'invitation.config.json')
     fs.writeFileSync(configPath, JSON.stringify(configManifest, null, 2), 'utf-8')
 
+    // Generar .env y .env.template con VITE_EVENT_ID
+    const envPath = path.join(targetPath, '.env')
+    const envTemplatePath = path.join(targetPath, '.env.template')
+    const envContent = `VITE_BACKEND_URL=https://abrasa-tickets-backend-production.up.railway.app\nVITE_EVENT_ID=\n`
+    const envTemplateContent = `VITE_BACKEND_URL=\nVITE_EVENT_ID=\n`
+    fs.writeFileSync(envPath, envContent, 'utf-8')
+    fs.writeFileSync(envTemplatePath, envTemplateContent, 'utf-8')
+
     console.log('✅ Archivo invitation.config.json generado exitosamente.')
 
     // 6. Optimización Modular: Eliminación de archivos no utilizados y reescritura de Invitation.tsx y app.scss

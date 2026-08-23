@@ -16,9 +16,15 @@ export async function promptConfirmationAndGraduates(eventType, showGraduatesDef
             { label: 'Llamada telefónica / Directo', value: 'phone call' },
         ])
 
+        let eventId = ''
+        if (type === 'abrasa') {
+            eventId = await ask('      -> ID del Evento en Abrasa (para .env VITE_EVENT_ID)', 'demo-event-id')
+        }
+
         confirmationData = {
             showConfirmation: true,
             type,
+            eventId,
         }
     }
 
