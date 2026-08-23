@@ -106,27 +106,27 @@
 }
 
 /// Responsive Media Query Helper
-@mixin respondTo($breakpoint) {
-    @if $breakpoint == 'sm' or $breakpoint == 576px {
-        @media (max-width: 576px) {
+@mixin respondToMin($breakpoint) {
+    @if $breakpoint =='sm' or $breakpoint ==576px {
+        @media (min-width: 576px) {
             @content;
         }
     }
 
-    @else if $breakpoint == 'md' or $breakpoint == 768px {
-        @media (max-width: 768px) {
+    @else if $breakpoint =='md' or $breakpoint ==768px {
+        @media (min-width: 768px) {
             @content;
         }
     }
 
-    @else if $breakpoint == 'lg' or $breakpoint == 992px {
-        @media (max-width: 992px) {
+    @else if $breakpoint =='lg' or $breakpoint ==992px {
+        @media (min-width: 992px) {
             @content;
         }
     }
 
-    @else if $breakpoint == 'xl' or $breakpoint == 1200px {
-        @media (max-width: 1200px) {
+    @else if $breakpoint =='xl' or $breakpoint ==1200px {
+        @media (min-width: 1200px) {
             @content;
         }
     }
@@ -146,7 +146,7 @@
 
 /// Text Truncation (Single or Multi-line)
 @mixin textTruncate($lines: 1) {
-    @if $lines == 1 {
+    @if $lines ==1 {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
