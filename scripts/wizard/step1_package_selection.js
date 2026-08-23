@@ -1,27 +1,36 @@
 import pc from 'picocolors'
 import { askSelect, askConfirm, ask, printSectionTitle } from './prompts.js'
 
-export async function promptPackageSelection() {
+export async function promptPackageSelection(preselectedEventType) {
     printSectionTitle('1. Tipo de Evento & Paquete Comercial')
 
-    // 1. Tipo de Evento
-    const eventType = await askSelect('1. Selecciona el Tipo de Evento:', [
-        { label: 'Boda', value: 'wedding' },
-        { label: 'XV Años', value: 'xv' },
-        { label: 'Graduación', value: 'graduation' },
-        { label: 'Fiesta Infantil', value: 'kids' },
-        { label: 'General / Cumpleaños / Otro', value: 'general' },
-    ])
+    // 1. Tipo de Evento (si fue seleccionado en el paso 0 se reutiliza)
+    let eventType = preselectedEventType
+    if (!eventType) {
+        eventType = await askSelect('1. Selecciona el Tipo de Evento:', [
+            { label: 'Boda', value: 'wedding' },
+            { label: 'XV Años', value: 'xv' },
+            { label: 'Graduación', value: 'graduation' },
+            { label: 'Fiesta Infantil', value: 'kids' },
+            { label: 'Bautizo', value: 'bautizo' },
+            { label: 'General / Cumpleaños / Otro', value: 'general' },
+        ])
+    }
 
     let packageTier = 'platino'
     let hasPhotos = false
     let basePrice = 0
     let packageName = ''
 
-    if (eventType === 'kids') {
-        packageTier = await askSelect('2. Paquete de Fiesta Infantil:', [
-            { label: 'Esmeralda ($199.99) - Básica / Temática', value: 'esmeralda' },
-            { label: 'Cuarzo ($399.99) - Premium / Formal', value: 'cuarzo' },
+    let isInfantPackage = eventType === 'kids'
+    if (eventType === 'bautizo') {
+        isInfantPackage = await askConfirm('¿Es paquete de línea Infantil (Esmeralda $199.99 / Cuarzo $399.99)?', true)
+    }
+
+    if (isInfantPackage) {
+        packageTier = await askSelect('2. Paquete de Línea Infantil:', [
+            { label: 'Esmeralda ($199.99) - Básica / Temática (Sobre + Portada + Ubicación GPS + RSVP WhatsApp)', value: 'esmeralda' },
+            { label: 'Cuarzo ($399.99) - Premium / Formal (Scratch Reveal + Cuenta Regresiva + Galería + Regalos + RSVP)', value: 'cuarzo' },
         ])
 
         if (packageTier === 'esmeralda') {
@@ -34,21 +43,25 @@ export async function promptPackageSelection() {
             hasPhotos = true
         }
     } else {
-        // 2. Línea Visual (Con Fotos vs Sin Fotos)
-        hasPhotos = await askConfirm('2. ¿La invitación incluye Fotografías de sesión / galería?', true)
+        // 2. Selección de Línea Visual (Con Fotos vs Sin Fotos)
+        const visualLine = await askSelect('2. Selecciona la Línea Visual de la Invitación:', [
+            { label: 'Línea CON Fotos (Incluye fotografías de sesión / galería)', value: 'con_fotos' },
+            { label: 'Línea SIN Fotos (Diseño enfocado en tipografía e ilustraciones sin fotos)', value: 'sin_fotos' },
+        ])
+        hasPhotos = visualLine === 'con_fotos'
 
         const options = hasPhotos
             ? [
-                { label: 'Bronce ($699.99) - Esencial Con Fotos (Logística + Itinerario + RSVP WhatsApp)', value: 'bronce' },
-                { label: 'Platino ($899.99) - Intermedio Con Fotos (Familia + Regalos + Plataforma Abrasa)', value: 'platino' },
-                { label: 'Oro ($1,099.99) - VIP Con Fotos (Abrasa + Scratch Reveal + Album QR + Monograma)', value: 'oro' },
-                { label: 'Rubí ($1,899.00) - A la Medida Cero Plantilla Con Fotos', value: 'rubi' },
+                { label: 'Bronce ($699.99) - Esencial Con Fotos (Logística + Itinerario + Save The Date + RSVP WhatsApp/Llamada)', value: 'bronce' },
+                { label: 'Platino ($899.99) - Intermedio Con Fotos (Secciones completas + Familia + Mesa de Regalos + Plataforma Abrasa RSVP)', value: 'platino' },
+                { label: 'Oro ($1,099.99) - VIP Premium Con Fotos (Plataforma Abrasa Pro + Scratch Reveal + Álbum QR + Monograma)', value: 'oro' },
+                { label: 'Rubí ($1,899.00) - A la Medida Cero Plantilla Con Fotos (Diseño 100% único)', value: 'rubi' },
             ]
             : [
-                { label: 'Bronce ($499.99) - Esencial Sin Fotos (Logística + Itinerario + RSVP WhatsApp)', value: 'bronce' },
-                { label: 'Platino ($699.99) - Intermedio Sin Fotos (Familia + Regalos + Plataforma Abrasa)', value: 'platino' },
-                { label: 'Oro ($899.99) - VIP Sin Fotos (Abrasa + Scratch Reveal + Album QR + Monograma)', value: 'oro' },
-                { label: 'Rubí ($1,599.00) - A la Medida Cero Plantilla Sin Fotos', value: 'rubi' },
+                { label: 'Bronce ($499.99) - Esencial Sin Fotos (Logística + Itinerario + Save The Date + RSVP WhatsApp/Llamada)', value: 'bronce' },
+                { label: 'Platino ($699.99) - Intermedio Sin Fotos (Secciones completas + Familia + Mesa de Regalos + Plataforma Abrasa RSVP)', value: 'platino' },
+                { label: 'Oro ($899.99) - VIP Premium Sin Fotos (Plataforma Abrasa Pro + Scratch Reveal + Álbum QR + Monograma)', value: 'oro' },
+                { label: 'Rubí ($1,599.00) - A la Medida Cero Plantilla Sin Fotos (Diseño 100% único)', value: 'rubi' },
             ]
 
         packageTier = await askSelect('3. Selecciona el Nivel del Paquete:', options)
@@ -97,18 +110,56 @@ export async function promptPackageSelection() {
         hasTableAssignment = await askConfirm('   -> ¿Incluir asignación de mesas y croquis interactivo de lugar?', true)
     }
 
-    // 4. Módulos Extra Add-ons ($150 c/u - Habilitados por defecto si es paquete Oro o superior)
-    console.log(`\n${pc.bold(pc.magenta('4. Módulos Extra Add-ons ($150.00 c/u):'))}`)
-    const selectedAddons = {
-        lodgingAndWeather: await askConfirm('   -> ¿Incluir Add-on Hospedaje & Clima?', false),
-        ourStory: await askConfirm('   -> ¿Incluir Add-on Nuestra Historia / Cita?', false),
-        faqAndMenu: await askConfirm('   -> ¿Incluir Add-on Preguntas Frecuentes & Menú?', false),
-        playlistAndPhotos: await askConfirm('   -> ¿Incluir Add-on Playlist & Carga de Fotos de Invitados?', false),
-        monogram: packageTier === 'oro' || packageTier === 'rubi' || await askConfirm('   -> ¿Incluir Add-on Monograma Exclusivo?', false),
+    // 4. Módulos Extra Add-ons ($150.00 c/u)
+    const includedAddons = {
+        monogram: packageTier === 'oro' || packageTier === 'rubi',
     }
 
-    const addonsCount = Object.values(selectedAddons).filter(Boolean).length
-    const addonsTotalPrice = addonsCount * 150.0
+    const selectedAddons = {
+        lodgingAndWeather: false,
+        ourStory: false,
+        faqAndMenu: false,
+        playlistAndPhotos: false,
+        monogram: Boolean(includedAddons.monogram),
+    }
+
+    const extraPaidAddons = {
+        lodgingAndWeather: false,
+        ourStory: false,
+        faqAndMenu: false,
+        playlistAndPhotos: false,
+        monogram: false,
+    }
+
+    const includeAddons = await askConfirm('4. ¿Deseas agregar algún Módulo Extra Add-on ($150.00 c/u)?', false)
+
+    if (includeAddons) {
+        let keepSelecting = true
+        while (keepSelecting) {
+            const addonChoice = await askSelect('   -> Selecciona el Add-on a incluir:', [
+                { label: `1. Hospedaje & Clima ($150.00) ${selectedAddons.lodgingAndWeather ? '[ACTIVADO]' : ''}`, value: 'lodgingAndWeather' },
+                { label: `2. Nuestra Historia / Cita ($150.00) ${selectedAddons.ourStory ? '[ACTIVADO]' : ''}`, value: 'ourStory' },
+                { label: `3. Preguntas Frecuentes & Menú ($150.00) ${selectedAddons.faqAndMenu ? '[ACTIVADO]' : ''}`, value: 'faqAndMenu' },
+                { label: `4. Playlist & Carga de Fotos de Invitados ($150.00) ${selectedAddons.playlistAndPhotos ? '[ACTIVADO]' : ''}`, value: 'playlistAndPhotos' },
+                { label: `5. Monograma Exclusivo ($150.00) ${selectedAddons.monogram ? (includedAddons.monogram ? '[INCLUIDO EN PAQUETE]' : '[ACTIVADO]') : ''}`, value: 'monogram' },
+                { label: '6. Terminar selección de Add-ons', value: 'done' },
+            ])
+
+            if (addonChoice === 'done') {
+                keepSelecting = false
+            } else if (addonChoice === 'monogram' && includedAddons.monogram) {
+                console.log(pc.yellow('   -> El Monograma Exclusivo ya está INCLUIDO sin costo adicional en tu paquete ' + packageTier.toUpperCase()))
+            } else {
+                extraPaidAddons[addonChoice] = !extraPaidAddons[addonChoice]
+                selectedAddons[addonChoice] = extraPaidAddons[addonChoice] || Boolean(includedAddons[addonChoice])
+                const status = selectedAddons[addonChoice] ? 'Activado' : 'Desactivado'
+                console.log(`${pc.green('   ✓ ' + status + ': ' + addonChoice)}`)
+            }
+        }
+    }
+
+    const extraAddonsCount = Object.values(extraPaidAddons).filter(Boolean).length
+    const addonsTotalPrice = extraAddonsCount * 150.0
 
     // 5. Secciones Progresivas según Paquete
     const isBronce = packageTier === 'bronce'
@@ -120,7 +171,7 @@ export async function promptPackageSelection() {
         showScratchReveal: packageTier === 'oro' || packageTier === 'rubi' || packageTier === 'cuarzo',
         showCountdown: true, // Incluido en TODOS los paquetes (Save The Date + Conteo)
         showMessage: true,
-        showFamily: !isBronce && (eventType === 'wedding' || eventType === 'xv'),
+        showFamily: !isBronce && (eventType === 'wedding' || eventType === 'xv' || eventType === 'bautizo'),
         showPlaces: true,
         showGraduates: eventType === 'graduation',
         showDressCode: !isEsmeralda,

@@ -110,11 +110,15 @@
     },
     "presents": {
       "showPresents": true,
-      "title": "Mesa de Regalos Liverpool",
+      "title": "Mesa de Regalos",
       "url": "https://mesaderegalos.liverpool.com.mx"
     },
     "confirmation": {
-      "showConfirmation": true
+      "showConfirmation": true,
+      "type": "abrasa",
+      "isQuantityFree": true,
+      "whatsappPhone": "",
+      "whatsappMessage": "¡Hola! Confirmo mi asistencia al evento."
     },
     "rsvp": {
       "showRsvp": true

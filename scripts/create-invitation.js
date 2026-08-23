@@ -7,12 +7,12 @@ import pc from 'picocolors'
 import { promptProjectSetup } from './wizard/step0_project_setup.js'
 import { promptPackageSelection } from './wizard/step1_package_selection.js'
 import { promptThemeAndUI } from './wizard/step2_theme_ui.js'
-import { promptHeroAndScratchReveal } from './wizard/step3_hero_sections.js'
+import { promptHero } from './wizard/step3_hero_sections.js'
 import { promptMessageAndFamily } from './wizard/step4_message_family.js'
 import { promptPlacesAndItinerary } from './wizard/step5_places_itinerary.js'
 import { promptProtocolAndPresents } from './wizard/step6_protocol_presents.js'
 import { promptConfirmationAndGraduates } from './wizard/step7_confirmation_graduates.js'
-import { promptGalleryAndTicket } from './wizard/step8_gallery_ticket.js'
+import { promptGallery } from './wizard/step8_gallery_ticket.js'
 import { promptAddons } from './wizard/step9_addons.js'
 import { promptFarewell } from './wizard/step10_farewell.js'
 import { closePrompts, printHeader } from './wizard/prompts.js'
@@ -45,15 +45,12 @@ const copyRecursive = (src, dest) => {
 async function main() {
     try {
         const setup = await promptProjectSetup()
-        const packageData = await promptPackageSelection()
+        const packageData = await promptPackageSelection(setup.eventType)
         const themeAndUi = await promptThemeAndUI(
             'María & Carlos',
             packageData.packageTier !== 'esmeralda'
         )
-        const heroData = await promptHeroAndScratchReveal(
-            packageData.eventType,
-            packageData.sectionToggles.showScratchReveal
-        )
+        const heroData = await promptHero(packageData.eventType)
         const messageFamilyData = await promptMessageAndFamily(
             packageData.eventType,
             packageData.sectionToggles.showFamily
@@ -72,10 +69,7 @@ async function main() {
             packageData.eventType,
             packageData.sectionToggles.showGraduates
         )
-        const galleryTicketData = await promptGalleryAndTicket(
-            packageData.sectionToggles.showGallery,
-            packageData.hasTicketingSystem
-        )
+        const galleryData = await promptGallery(packageData.sectionToggles.showGallery)
         const addonsData = await promptAddons(packageData.selectedAddons)
         const farewellData = await promptFarewell(heroData.hero.names)
 
@@ -100,17 +94,27 @@ async function main() {
                     showEnvelop: true,
                 },
                 hero: heroData.hero,
-                scratchReveal: heroData.scratchReveal,
+                scratchReveal: {
+                    showScratchReveal: Boolean(packageData.sectionToggles.showScratchReveal),
+                },
                 message: messageFamilyData.message,
                 family: messageFamilyData.family,
                 places: placesItineraryData.places,
                 itinerary: placesItineraryData.itinerary,
                 dressCode: protocolPresentsData.dressCode,
                 presents: protocolPresentsData.presents,
-                confirmation: confirmationGraduatesData.confirmation,
+                confirmation: {
+                    showConfirmation: confirmationGraduatesData.confirmation.showConfirmation,
+                    type: confirmationGraduatesData.confirmation.type || 'abrasa',
+                    isQuantityFree: Boolean(confirmationGraduatesData.confirmation.isQuantityFree),
+                    whatsappPhone: confirmationGraduatesData.confirmation.whatsappPhone || '',
+                    whatsappMessage: confirmationGraduatesData.confirmation.whatsappMessage || '',
+                },
                 graduates: confirmationGraduatesData.graduates,
-                gallery: galleryTicketData.gallery,
-                ticket: galleryTicketData.ticket,
+                gallery: galleryData.gallery,
+                ticket: {
+                    showTicket: Boolean(packageData.hasTicketingSystem),
+                },
                 addons: addonsData,
                 farewell: farewellData,
             },

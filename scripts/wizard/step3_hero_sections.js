@@ -1,4 +1,4 @@
-import { ask, askConfirm, printSectionTitle } from './prompts.js'
+import { ask, printSectionTitle } from './prompts.js'
 
 const formatDateFormatted = (dateStr) => {
     try {
@@ -17,8 +17,8 @@ const formatDateFormatted = (dateStr) => {
     return '20 DE NOVIEMBRE DE 2026'
 }
 
-export async function promptHeroAndScratchReveal(eventType, defaultScratch = false) {
-    printSectionTitle('3. Portada (Hero) & Dinámica Scratch Reveal')
+export async function promptHero(eventType) {
+    printSectionTitle('3. Portada (Hero)')
 
     let promptNamesDefault = 'María & Carlos'
     if (eventType === 'xv') promptNamesDefault = 'Sofía Guadalupe'
@@ -31,8 +31,6 @@ export async function promptHeroAndScratchReveal(eventType, defaultScratch = fal
     const subtitle = await ask('   -> Subtítulo / Frase de portada', 'Nos complace invitarte a celebrar este momento tan especial')
     const city = await ask('   -> Ciudad del evento', 'Aguascalientes, México')
 
-    const showScratchReveal = await askConfirm('   -> ¿Activar dinámica Scratch Reveal (Rascable) en la portada?', defaultScratch)
-
     return {
         eventDateRaw: rawDate,
         hero: {
@@ -41,9 +39,6 @@ export async function promptHeroAndScratchReveal(eventType, defaultScratch = fal
             subtitle,
             date: formattedDate,
             city,
-        },
-        scratchReveal: {
-            showScratchReveal,
         },
     }
 }

@@ -1,3 +1,12 @@
+
+export interface ConfirmationSectionConfig {
+    showConfirmation?: boolean
+    type?: 'abrasa' | 'whatsapp' | 'phone call'
+    isQuantityFree?: boolean
+    whatsappPhone?: string
+    whatsappMessage?: string
+    [key: string]: unknown
+}
 import type { ButtonVariant } from './button.types'
 import type { MenuVariant } from './menu.types'
 import type { MusicPlayerVariant } from './music-player.types'
@@ -139,7 +148,7 @@ export interface SectionsConfig {
     details?: SectionItemConfig & { showDetails?: boolean }
     gallery?: SectionItemConfig & { showGallery?: boolean }
     presents?: SectionItemConfig & { showPresents?: boolean; title?: string; url?: string }
-    confirmation?: SectionItemConfig & { showConfirmation?: boolean }
+    confirmation?: ConfirmationSectionConfig
     rsvp?: SectionItemConfig & { showRsvp?: boolean }
     farewell?: SectionItemConfig & { showFarewell?: boolean }
     ticket?: SectionItemConfig & { showTicket?: boolean }

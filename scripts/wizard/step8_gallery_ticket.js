@@ -1,7 +1,7 @@
 import { ask, askSelect, askConfirm, printSectionTitle } from './prompts.js'
 
-export async function promptGalleryAndTicket(showGalleryDefault = true, showTicketDefault = false) {
-    printSectionTitle('8. Galería de Fotos & Módulo Boletaje')
+export async function promptGallery(showGalleryDefault = true) {
+    printSectionTitle('8. Galería de Fotos')
 
     // 1. Galería de Fotos
     const showGallery = await askConfirm('   -> ¿Incluir sección de Galería de Fotos?', showGalleryDefault)
@@ -25,11 +25,7 @@ export async function promptGalleryAndTicket(showGalleryDefault = true, showTick
         }
     }
 
-    // 2. Ticket / Boletaje
     return {
         gallery: galleryData,
-        ticket: {
-            showTicket: showTicketDefault,
-        },
     }
 }

@@ -17,14 +17,25 @@ export async function promptConfirmationAndGraduates(eventType, showGraduatesDef
         ])
 
         let eventId = ''
+        let isQuantityFree = false
+        let whatsappPhone = ''
+        let whatsappMessage = ''
+
         if (type === 'abrasa') {
-            eventId = await ask('      -> ID del Evento en Abrasa (para .env VITE_EVENT_ID)', 'demo-event-id')
+            eventId = await ask('      -> ID del Evento en Abrasa (para .env VITE_EVENT_ID)', '')
+            isQuantityFree = await askConfirm('      -> ¿Modalidad de confirmación abierta libre? (Permite seleccionar cantidad de adultos/niños)', true)
+        } else if (type === 'whatsapp') {
+            whatsappPhone = await ask('      -> Número de WhatsApp para recibir confirmaciones', '4491234567')
+            whatsappMessage = await ask('      -> Mensaje predeterminado de WhatsApp', '¡Hola! Confirmo mi asistencia al evento.')
         }
 
         confirmationData = {
             showConfirmation: true,
             type,
             eventId,
+            isQuantityFree,
+            whatsappPhone,
+            whatsappMessage,
         }
     }
 
