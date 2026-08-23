@@ -7,6 +7,7 @@ import themeReducer from './ui/theme.slice'
 import drawerReducer from './ui/drawer.slice'
 import graduatesReducer from './graduates/graduates.slice'
 import ticketReducer from './ticket/ticket.slice'
+import confirmationReducer from './confirmation/confirmation.slice'
 
 export const store = configureStore({
     reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
         // FEATURES STATE
         graduates: graduatesReducer,
         ticket: ticketReducer,
+        confirmation: confirmationReducer,
     }
 })
 
