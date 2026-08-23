@@ -1,0 +1,126 @@
+{
+  "eventType": "wedding",
+  "packageTier": "with_photos",
+  "theme": {
+    "fontPack": 4,
+    "palette": 2,
+    "buttonVariant": "primary",
+    "menu": {
+      "show": true,
+      "variant": "bar",
+      "title": "María y Carlos",
+      "buttonVariant": "icon"
+    },
+    "music": {
+      "show": true,
+      "variant": "floating",
+      "buttonVariant": "primary",
+      "songTitle": "Música de fondo",
+      "artistName": "Música del evento"
+    }
+  },
+  "config": {
+    "hasTicketingSystem": false,
+    "hasRSVP": true,
+    "hasMusic": true,
+    "hasMenu": true
+  },
+  "sections": {
+    "hero": {
+      "showHero": true,
+      "names": "María & Carlos",
+      "subtitle": "Nos complace invitarte a celebrar el día más importante de nuestras vidas",
+      "date": "20 DE NOVIEMBRE DE 2026",
+      "bgImage": ""
+    },
+    "message": {
+      "showMessage": true,
+      "message": "Te invitamos de corazón a acompañarnos en este momento tan especial y celebrar juntos el amor que nos une."
+    },
+    "countdown": {
+      "showCountdown": true,
+      "targetDate": "2026-11-20T17:00:00"
+    },
+    "family": {
+      "showFamily": true
+    },
+    "places": {
+      "showPlaces": true,
+      "locations": [
+        {
+          "title": "Ceremonia Religiosa",
+          "location": "Catedral Metropolitana",
+          "time": "17:00 HRS",
+          "date": "2026-11-20",
+          "url": "https://maps.google.com"
+        },
+        {
+          "title": "Recepción",
+          "location": "Salón Los Pinos",
+          "time": "19:00 HRS",
+          "date": "2026-11-20",
+          "url": "https://maps.google.com"
+        }
+      ]
+    },
+    "graduates": {
+      "showGraduates": false
+    },
+    "dressCode": {
+      "showDressCode": true,
+      "title": "Código de Vestimenta",
+      "description": "Te sugerimos vestir de etiqueta semi-formal.",
+      "attire": {
+        "men": "Traje oscuro y corbata.",
+        "women": "Vestido largo o cocktail."
+      },
+      "colors": {
+        "suggested": [
+          "negro",
+          "azul oscuro",
+          "borgoña"
+        ],
+        "avoid": [
+          "blanco",
+          "rosa",
+          "beige"
+        ]
+      }
+    },
+    "itinerary": {
+      "showItinerary": true,
+      "itinerary": [
+        {
+          "time": "17:00 HRS",
+          "event": "Ceremonia Religiosa"
+        },
+        {
+          "time": "19:00 HRS",
+          "event": "Recepción & Fiesta"
+        }
+      ]
+    },
+    "details": {
+      "showDetails": true
+    },
+    "gallery": {
+      "showGallery": true,
+      "title": "Galería de Fotos",
+      "images": []
+    },
+    "presents": {
+      "showPresents": true,
+      "title": "Mesa de Regalos Liverpool",
+      "url": "https://mesaderegalos.liverpool.com.mx"
+    },
+    "confirmation": {
+      "showConfirmation": true
+    },
+    "rsvp": {
+      "showRsvp": true
+    },
+    "farewell": {
+      "showFarewell": true
+    }
+  }
+}

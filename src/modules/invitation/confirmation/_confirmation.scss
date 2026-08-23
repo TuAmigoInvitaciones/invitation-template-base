@@ -1,0 +1,12 @@
+@use '../../../common/styles/variables' as vars;
+@use '../../../common/styles/mixins' as mix;
+
+.confirmation-section {
+
+    &__container {}
+
+    &__header {}
+
+    &__content {}
+
+}
