@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+﻿import React, { useEffect } from 'react'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 
 import { RouterApp } from '@/router'
 import { store } from '@/store/store'
@@ -20,14 +21,14 @@ const InvitationAppContent: React.FC = () => {
   }, [sections, theme])
 
   return (
-    <>
+    <BrowserRouter>
       <RouterApp />
       <ModalMaster />
       <DrawerMaster />
       <ToastContainer />
       <Menu />
       <MusicPlayer />
-    </>
+    </BrowserRouter>
   )
 }
 
