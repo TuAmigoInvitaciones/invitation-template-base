@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react'
+﻿import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { Envelop, Invitation, Search, Ticket } from '@/modules'
 import { useInvitationConfig, useTicket } from '@/common/hooks'
 
 export const RouterApp: React.FC = () => {
     const { config } = useInvitationConfig()
-    const { ticket, onCheckInitialData } = useTicket()
+    const { ticket, isChecking, onCheckInitialData } = useTicket()
 
     useEffect(() => {
         onCheckInitialData()
     }, [onCheckInitialData])
+
+    if (isChecking) {
+        return null
+    }
 
     const hasTicketingSystem = config.hasTicketingSystem
 

@@ -2,7 +2,7 @@
 import { useCallback } from "react";
 
 import type { AppDispatch, RootState } from "@/store/store";
-import { setTicket } from "@/store/ticket/ticket.slice";
+import { setIsChecking, setTicket } from "@/store/ticket/ticket.slice";
 import { closeMenu } from "@/store/ui/menu.slice";
 import { closeModal } from "@/store/ui/modal.slice";
 import { startGettingTicket } from "@/store/ticket/ticket.thunk";
@@ -10,7 +10,7 @@ import { startGettingTicket } from "@/store/ticket/ticket.thunk";
 export const useTicket = () => {
 
     const dispatch = useDispatch<AppDispatch>();
-    const { error, isLoading, ticket } = useSelector((state: RootState) => state.ticket)
+    const { error, isLoading, isChecking, ticket } = useSelector((state: RootState) => state.ticket)
 
     const onGetTicket = useCallback(async (keyPass: string) => {
         return await dispatch(startGettingTicket(keyPass))
@@ -24,15 +24,24 @@ export const useTicket = () => {
     }, [dispatch])
 
     const onCheckInitialData = useCallback(() => {
-        const ticket = localStorage.getItem('abrasa-ticket')
-        if (ticket) {
-            dispatch(setTicket(JSON.parse(ticket)))
+        const ticketStr = localStorage.getItem('abrasa-ticket')
+        if (ticketStr) {
+            try {
+                const ticket = JSON.parse(ticketStr)
+                dispatch(setTicket(ticket))
+            } catch {
+                dispatch(setTicket(null))
+            }
+        } else {
+            dispatch(setTicket(null))
         }
+        dispatch(setIsChecking(false))
     }, [dispatch])
 
     return {
         error,
         isLoading,
+        isChecking,
         ticket,
 
         onGetTicket,
