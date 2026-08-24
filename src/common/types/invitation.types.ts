@@ -1,3 +1,9 @@
+export interface EnvelopConfig {
+    showEnvelop?: boolean
+    type?: 'cerrado-abierto' | 'video-apertura' | 'animacion-apertura'
+    [key: string]: unknown
+}
+
 
 export interface ConfirmationSectionConfig {
     showConfirmation?: boolean

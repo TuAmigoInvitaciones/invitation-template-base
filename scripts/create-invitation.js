@@ -92,6 +92,7 @@ async function main() {
             sections: {
                 envelop: {
                     showEnvelop: true,
+                    type: themeAndUi.envelopType || 'cerrado-abierto',
                 },
                 hero: heroData.hero,
                 scratchReveal: {

@@ -26,14 +26,21 @@ export async function promptThemeAndUI(namesDefault = 'María & Carlos', hasMusi
     ])
     const fontPack = parseInt(fontPackStr, 10) || 1
 
-    // 3. Menú de Navegación
+    // 3. Variante de Sobre / Apertura (Envelop)
+    const envelopType = await askSelect('Variante del Sobre de Apertura (Envelop):', [
+        { label: 'Cerrado / Abierto Tradicional (cerrado-abierto)', value: 'cerrado-abierto' },
+        { label: 'Video de Apertura (video-apertura)', value: 'video-apertura' },
+        { label: 'Animación de Apertura Premium (animacion-apertura)', value: 'animacion-apertura' },
+    ])
+
+    // 4. Menú de Navegación
     const menuTitle = await ask('   -> Título para la barra de navegación', namesDefault)
     const menuVariant = await askSelect('Variante visual del menú:', [
         { label: 'Barra Superior (Sticky Bar)', value: 'bar' },
         { label: 'Botón Flotante (Floating Drawer)', value: 'floating' },
     ])
 
-    // 4. Reproductor de Música
+    // 5. Reproductor de Música
     let musicTitle = 'Música de fondo'
     let musicVariant = 'floating'
 
@@ -50,6 +57,7 @@ export async function promptThemeAndUI(namesDefault = 'María & Carlos', hasMusi
             fontPack,
             palette,
         },
+        envelopType,
         ui: {
             menu: {
                 show: true,

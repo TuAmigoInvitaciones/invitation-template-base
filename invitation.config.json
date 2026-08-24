@@ -125,6 +125,10 @@
     },
     "farewell": {
       "showFarewell": true
+    },
+    "envelop": {
+      "showEnvelop": true,
+      "type": "cerrado-abierto"
     }
   }
 }
