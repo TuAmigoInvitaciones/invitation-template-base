@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { useInvitationConfig } from '@/common/hooks'
 
 export const HeroSection: React.FC = () => {
