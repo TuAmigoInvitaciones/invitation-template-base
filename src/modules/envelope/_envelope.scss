@@ -1,7 +1,7 @@
 @use '../../common/styles/variables' as vars;
 @use '../../common/styles/mixins' as mix;
 
-.envelop {
+.envelopee {
     position: relative;
     width: 100%;
     height: 100dvh;
@@ -64,3 +64,5 @@
         animation: flashAnimation 0.5s ease-out forwards;
     }
 }
+
+

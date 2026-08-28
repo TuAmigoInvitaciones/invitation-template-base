@@ -29,7 +29,8 @@ interface Props {
 
 export const ConfirmationSectionForm: React.FC<Props> = ({ isQuantityFree = false }) => {
     const { sections } = useInvitationConfig()
-    const noKids = Boolean(sections.dressCode?.colors?.suggested && (sections.dressCode as Record<string, unknown>).noKids)
+    const noKids = Boolean(sections.details?.noKids ?? (sections.dressCode as Record<string, unknown>)?.noKids)
+
 
     const {
         register,

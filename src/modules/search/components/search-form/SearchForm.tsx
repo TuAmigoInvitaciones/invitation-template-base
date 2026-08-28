@@ -1,4 +1,4 @@
-ï»¿import React from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 import { useTicket, useNavigation } from '@/common/hooks'
@@ -18,7 +18,7 @@ export const SearchForm: React.FC = () => {
     const onSubmit = async (data: TicketSearch) => {
         const isSuccess = await onGetTicket(data.keyPass)
         if (isSuccess) {
-            goTo('/envelop')
+            goTo('/envelope')
         }
     }
 
@@ -32,7 +32,7 @@ export const SearchForm: React.FC = () => {
                 <input
                     {...register('keyPass', {
                         required: 'Por favor, ingresa tu clave de acceso',
-                        validate: (val) => (val && val.trim().length > 0) || 'Por favor, ingresa una clave de acceso vÃ¡lida',
+                        validate: (val) => (val && val.trim().length > 0) || 'Por favor, ingresa una clave de acceso válida',
                         minLength: { value: 4, message: 'La clave de acceso debe tener al menos 4 caracteres' },
                     })}
                     type="text"
@@ -55,10 +55,10 @@ export const SearchForm: React.FC = () => {
                     size="lg"
                     radius="full"
                     icon={<MagnifyingGlassIcon size={18} weight="bold" />}
-                    aria-label="Buscar invitaciÃ³n"
+                    aria-label="Buscar invitación"
                     isLoading={isLoading}
                 >
-                    BUSCAR INVITACIÃ“N
+                    BUSCAR INVITACIÓN
                 </Button>
             </div>
         </form>

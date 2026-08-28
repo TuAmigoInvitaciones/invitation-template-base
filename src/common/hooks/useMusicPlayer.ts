@@ -29,12 +29,12 @@ export const useMusicPlayer = (props?: MusicPlayerProps) => {
     const onPauseMusic = () => dispatch(pauseMusic())
     const onToggleMusic = () => dispatch(toggleMusic())
 
-    const isHiddenRoute = location.pathname === '/envelop' || location.pathname === '/search'
+    const isHiddenRoute = location.pathname === '/envelopee' || location.pathname === '/search'
     const isMusicVisible = (props?.show ?? musicConfig?.show ?? config?.hasMusic ?? true) && !isHiddenRoute
     const activeVariant: MusicPlayerVariant = props?.variant || musicConfig?.variant || 'floating'
     const activeBtnVariant: ButtonVariant = props?.buttonVariant || musicConfig?.buttonVariant || theme.buttonVariant || 'primary'
-    const activeSongTitle = props?.songTitle || musicConfig?.songTitle || 'MÃºsica de fondo'
-    const activeArtistName = props?.artistName || musicConfig?.artistName || 'MÃºsica del evento'
+    const activeSongTitle = props?.songTitle || musicConfig?.songTitle || 'Música de fondo'
+    const activeArtistName = props?.artistName || musicConfig?.artistName || 'Música del evento'
 
     return {
         isPlaying,
@@ -49,3 +49,5 @@ export const useMusicPlayer = (props?: MusicPlayerProps) => {
         onToggleMusic,
     }
 }
+
+

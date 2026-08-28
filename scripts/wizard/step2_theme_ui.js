@@ -1,6 +1,6 @@
-import { askSelect, ask, printSectionTitle } from './prompts.js'
+﻿import { askSelect, ask, printSectionTitle } from './prompts.js'
 
-export async function promptThemeAndUI(namesDefault = 'María & Carlos', hasMusic = true) {
+export async function promptThemeAndUI(namesDefault = 'MarÃ­a & Carlos', hasMusic = true) {
     printSectionTitle('2. Estilo Visual & Componentes de Interfaz (Theme & UI)')
 
     // 1. Paleta de Colores
@@ -17,7 +17,7 @@ export async function promptThemeAndUI(namesDefault = 'María & Carlos', hasMusi
     const palette = parseInt(paletteStr, 10) || 1
 
     // 2. Font Pack
-    const fontPackStr = await askSelect('Estilo de Tipografía (Font Pack):', [
+    const fontPackStr = await askSelect('Estilo de TipografÃ­a (Font Pack):', [
         { label: 'Pack 1: Alex Brush + Cormorant Garamond + Montserrat', value: '1' },
         { label: 'Pack 2: Pinyon Script + Bodoni Moda + Plus Jakarta Sans', value: '2' },
         { label: 'Pack 3: Greating + EB Garamond + Open Sans', value: '3' },
@@ -26,28 +26,28 @@ export async function promptThemeAndUI(namesDefault = 'María & Carlos', hasMusi
     ])
     const fontPack = parseInt(fontPackStr, 10) || 1
 
-    // 3. Variante de Sobre / Apertura (Envelop)
-    const envelopType = await askSelect('Variante del Sobre de Apertura (Envelop):', [
+    // 3. Variante de Sobre / Apertura (envelopee)
+    const envelopeeType = await askSelect('Variante del Sobre de Apertura (envelopee):', [
         { label: 'Cerrado / Abierto Tradicional (cerrado-abierto)', value: 'cerrado-abierto' },
         { label: 'Video de Apertura (video-apertura)', value: 'video-apertura' },
-        { label: 'Animación de Apertura Premium (animacion-apertura)', value: 'animacion-apertura' },
+        { label: 'AnimaciÃ³n de Apertura Premium (animacion-apertura)', value: 'animacion-apertura' },
     ])
 
-    // 4. Menú de Navegación
-    const menuTitle = await ask('   -> Título para la barra de navegación', namesDefault)
-    const menuVariant = await askSelect('Variante visual del menú:', [
+    // 4. MenÃº de NavegaciÃ³n
+    const menuTitle = await ask('   -> TÃ­tulo para la barra de navegaciÃ³n', namesDefault)
+    const menuVariant = await askSelect('Variante visual del menÃº:', [
         { label: 'Barra Superior (Sticky Bar)', value: 'bar' },
-        { label: 'Botón Flotante (Floating Drawer)', value: 'floating' },
+        { label: 'BotÃ³n Flotante (Floating Drawer)', value: 'floating' },
     ])
 
-    // 5. Reproductor de Música
-    let musicTitle = 'Música de fondo'
+    // 5. Reproductor de MÃºsica
+    let musicTitle = 'MÃºsica de fondo'
     let musicVariant = 'floating'
 
     if (hasMusic) {
-        musicTitle = await ask('   -> Título del tema / canción de fondo', 'Música de fondo')
-        musicVariant = await askSelect('Variante del reproductor de música:', [
-            { label: 'Botón Flotante Circular (Floating)', value: 'floating' },
+        musicTitle = await ask('   -> TÃ­tulo del tema / canciÃ³n de fondo', 'MÃºsica de fondo')
+        musicVariant = await askSelect('Variante del reproductor de mÃºsica:', [
+            { label: 'BotÃ³n Flotante Circular (Floating)', value: 'floating' },
             { label: 'Barra Inferior Fija (Bottom Bar)', value: 'bar' },
         ])
     }
@@ -57,7 +57,7 @@ export async function promptThemeAndUI(namesDefault = 'María & Carlos', hasMusi
             fontPack,
             palette,
         },
-        envelopType,
+        envelopeeType,
         ui: {
             menu: {
                 show: true,
@@ -74,3 +74,4 @@ export async function promptThemeAndUI(namesDefault = 'María & Carlos', hasMusi
         },
     }
 }
+

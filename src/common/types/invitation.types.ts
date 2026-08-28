@@ -1,5 +1,5 @@
-export interface EnvelopConfig {
-    showEnvelop?: boolean
+export interface envelopeConfig {
+    showenvelopee?: boolean
     type?: 'cerrado-abierto' | 'video-apertura' | 'animacion-apertura'
     [key: string]: unknown
 }
@@ -184,7 +184,7 @@ export interface SectionsConfig {
             clabe?: string
             account?: string
         }
-        envelopeRain?: boolean
+        envelopeeRain?: boolean
     }
 
     confirmation?: ConfirmationSectionConfig
@@ -202,3 +202,4 @@ export interface InvitationConfigState {
     config: Record<string, boolean>
     sections: SectionsConfig
 }
+

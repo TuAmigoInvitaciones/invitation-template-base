@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useNavigation, useMusicPlayer } from '@/common/hooks'
 
-export const Envelop: React.FC = () => {
+export const Envelopeee: React.FC = () => {
     const timeoutRef = useRef<number | null>(null)
     const [isPlayStarted, setIsPlayStarted] = useState(false)
     const [showFlash, setShowFlash] = useState(false)
@@ -25,23 +25,25 @@ export const Envelop: React.FC = () => {
     }
 
     return (
-        <div className="envelop" onClick={handleOpen}>
-            <div className="envelop__card">
-                <h1 className="envelop__title">
-                    InvitaciÃ³n Especial
+        <div className="Envelopeee" onClick={handleOpen}>
+            <div className="Envelopeee__card">
+                <h1 className="Envelopeee__title">
+                    Invitación Especial
                 </h1>
-                <p className="envelop__subtitle">
-                    Haz clic para abrir tu invitaciÃ³n
+                <p className="Envelopeee__subtitle">
+                    Haz clic para abrir tu invitación
                 </p>
             </div>
 
             {!isPlayStarted && (
-                <div className="envelop__indicator-ring" />
+                <div className="Envelopeee__indicator-ring" />
             )}
 
             {showFlash && (
-                <div className="envelop__flash-transition" />
+                <div className="Envelopeee__flash-transition" />
             )}
         </div>
     )
 }
+
+

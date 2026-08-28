@@ -1,4 +1,4 @@
-import fs from 'fs'
+﻿import fs from 'fs'
 import path from 'path'
 import readline from 'readline'
 import { fileURLToPath } from 'url'
@@ -30,11 +30,11 @@ const askConfirm = async (query, defaultYes = true) => {
 }
 
 const askSelect = async (query, options) => {
-    console.log(`\n📌 ${query}`)
+    console.log(`\nðŸ“Œ ${query}`)
     options.forEach((opt, index) => {
         console.log(`   [${index + 1}] ${opt.label}`)
     })
-    const choiceStr = await ask('   Selecciona una opción (número)', '1')
+    const choiceStr = await ask('   Selecciona una opciÃ³n (nÃºmero)', '1')
     const choiceNum = parseInt(choiceStr, 10)
     if (isNaN(choiceNum) || choiceNum < 1 || choiceNum > options.length) {
         return options[0].value
@@ -82,46 +82,46 @@ const formatDateFormatted = (dateStr) => {
 
 async function main() {
     console.log('\n===================================================================')
-    console.log('  🚀 WIZARD AVANZADO DE CREACIÓN DE INVITACIONES DIGITALES 🚀')
+    console.log('  ðŸš€ WIZARD AVANZADO DE CREACIÃ“N DE INVITACIONES DIGITALES ðŸš€')
     console.log('===================================================================\n')
 
     const defaultFolderName = 'invitacion-' + Date.now().toString().slice(-4)
-    const folderName = await ask('📁 Nombre de la carpeta del cliente', defaultFolderName)
+    const folderName = await ask('ðŸ“ Nombre de la carpeta del cliente', defaultFolderName)
     const defaultPath = path.join(DEFAULT_CLIENTS_DIR, folderName)
-    const customPath = await ask('📁 Ruta donde deseas guardar la invitación', defaultPath)
+    const customPath = await ask('ðŸ“ Ruta donde deseas guardar la invitaciÃ³n', defaultPath)
 
     let targetPath = path.resolve(customPath.trim())
     if (fs.existsSync(targetPath) && fs.statSync(targetPath).isDirectory() && path.basename(targetPath) !== folderName) {
         targetPath = path.join(targetPath, folderName)
     }
 
-    console.log(`\n📌 El nuevo proyecto se creará en:\n   ${targetPath}\n`)
+    console.log(`\nðŸ“Œ El nuevo proyecto se crearÃ¡ en:\n   ${targetPath}\n`)
 
     // 1. Tipo de evento
     const eventType = await askSelect('1. Tipo de Evento:', [
-        { label: 'Boda 💍', value: 'wedding' },
-        { label: 'XV Años 👑', value: 'xv' },
-        { label: 'Graduación 🎓', value: 'graduation' },
-        { label: 'Fiesta Infantil 🎈', value: 'kids' },
-        { label: 'General / Cumpleaños / Otro 🎉', value: 'general' },
+        { label: 'Boda ðŸ’', value: 'wedding' },
+        { label: 'XV AÃ±os ðŸ‘‘', value: 'xv' },
+        { label: 'GraduaciÃ³n ðŸŽ“', value: 'graduation' },
+        { label: 'Fiesta Infantil ðŸŽˆ', value: 'kids' },
+        { label: 'General / CumpleaÃ±os / Otro ðŸŽ‰', value: 'general' },
     ])
 
-    // 2. Paquete seleccionado según tipo de evento
+    // 2. Paquete seleccionado segÃºn tipo de evento
     let packageTier = 'standard'
     let defaultShowGallery = false
     let hasTicketingSystem = false
     let hasMusic = true
 
     if (eventType === 'wedding' || eventType === 'xv' || eventType === 'general') {
-        packageTier = await askSelect('2. Paquete de Catálogo:', [
-            { label: 'Invitación con Fotografías (Incluye Galería) 📸', value: 'with_photos' },
-            { label: 'Invitación sin Fotografías 📄', value: 'without_photos' },
+        packageTier = await askSelect('2. Paquete de CatÃ¡logo:', [
+            { label: 'InvitaciÃ³n con FotografÃ­as (Incluye GalerÃ­a) ðŸ“¸', value: 'with_photos' },
+            { label: 'InvitaciÃ³n sin FotografÃ­as ðŸ“„', value: 'without_photos' },
         ])
         defaultShowGallery = packageTier === 'with_photos'
     } else if (eventType === 'kids') {
         packageTier = await askSelect('2. Paquete de Fiesta Infantil:', [
-            { label: 'Básica Temática ($299.99) - Esencial WhatsApp 🎈', value: 'basic_kids' },
-            { label: 'Premium / Formal ($499.99) - Interpuesta Completa ⭐', value: 'premium_kids' },
+            { label: 'BÃ¡sica TemÃ¡tica ($299.99) - Esencial WhatsApp ðŸŽˆ', value: 'basic_kids' },
+            { label: 'Premium / Formal ($499.99) - Interpuesta Completa â­', value: 'premium_kids' },
         ])
         defaultShowGallery = packageTier === 'premium_kids'
         hasMusic = packageTier === 'premium_kids'
@@ -131,7 +131,7 @@ async function main() {
         hasTicketingSystem = true
     }
 
-    // 3. Matriz por defecto de Secciones según tipo de evento y paquete
+    // 3. Matriz por defecto de Secciones segÃºn tipo de evento y paquete
     const sectionToggles = {
         showHero: true,
         showCountdown: eventType !== 'kids' || packageTier === 'premium_kids',
@@ -149,48 +149,48 @@ async function main() {
         showFarewell: true,
     }
 
-    // Opción para ajustar individualmente secciones
-    const customizeSections = await askConfirm('3. ¿Deseas personalizar manualmente la inclusión de secciones individuales?', false)
+    // OpciÃ³n para ajustar individualmente secciones
+    const customizeSections = await askConfirm('3. Â¿Deseas personalizar manualmente la inclusiÃ³n de secciones individuales?', false)
     if (customizeSections) {
-        console.log('\n🔧 Ajuste fino de secciones (S/n):')
-        sectionToggles.showHero = await askConfirm('   -> ¿Incluir Portada / Hero?', sectionToggles.showHero)
-        sectionToggles.showCountdown = await askConfirm('   -> ¿Incluir Cuenta Regresiva & Calendario?', sectionToggles.showCountdown)
-        sectionToggles.showFamily = await askConfirm('   -> ¿Incluir Sección de Familia / Padres?', sectionToggles.showFamily)
-        sectionToggles.showPlaces = await askConfirm('   -> ¿Incluir Ubicaciones (Ceremonia / Fiesta)?', sectionToggles.showPlaces)
-        sectionToggles.showGraduates = await askConfirm('   -> ¿Incluir Lista de Graduados?', sectionToggles.showGraduates)
-        sectionToggles.showDressCode = await askConfirm('   -> ¿Incluir Código de Vestimenta?', sectionToggles.showDressCode)
-        sectionToggles.showItinerary = await askConfirm('   -> ¿Incluir Itinerario / Amenidades?', sectionToggles.showItinerary)
-        sectionToggles.showDetails = await askConfirm('   -> ¿Incluir Notas / Recordatorios?', sectionToggles.showDetails)
-        sectionToggles.showGallery = await askConfirm('   -> ¿Incluir Galería de Fotos?', sectionToggles.showGallery)
-        sectionToggles.showPresents = await askConfirm('   -> ¿Incluir Mesa de Regalos?', sectionToggles.showPresents)
-        sectionToggles.showConfirmation = await askConfirm('   -> ¿Incluir Confirmación de Asistencia / WhatsApp?', sectionToggles.showConfirmation)
-        sectionToggles.showRsvp = await askConfirm('   -> ¿Incluir Módulo RSVP / Pases de Boletos?', sectionToggles.showRsvp)
+        console.log('\nðŸ”§ Ajuste fino de secciones (S/n):')
+        sectionToggles.showHero = await askConfirm('   -> Â¿Incluir Portada / Hero?', sectionToggles.showHero)
+        sectionToggles.showCountdown = await askConfirm('   -> Â¿Incluir Cuenta Regresiva & Calendario?', sectionToggles.showCountdown)
+        sectionToggles.showFamily = await askConfirm('   -> Â¿Incluir SecciÃ³n de Familia / Padres?', sectionToggles.showFamily)
+        sectionToggles.showPlaces = await askConfirm('   -> Â¿Incluir Ubicaciones (Ceremonia / Fiesta)?', sectionToggles.showPlaces)
+        sectionToggles.showGraduates = await askConfirm('   -> Â¿Incluir Lista de Graduados?', sectionToggles.showGraduates)
+        sectionToggles.showDressCode = await askConfirm('   -> Â¿Incluir CÃ³digo de Vestimenta?', sectionToggles.showDressCode)
+        sectionToggles.showItinerary = await askConfirm('   -> Â¿Incluir Itinerario / Amenidades?', sectionToggles.showItinerary)
+        sectionToggles.showDetails = await askConfirm('   -> Â¿Incluir Notas / Recordatorios?', sectionToggles.showDetails)
+        sectionToggles.showGallery = await askConfirm('   -> Â¿Incluir GalerÃ­a de Fotos?', sectionToggles.showGallery)
+        sectionToggles.showPresents = await askConfirm('   -> Â¿Incluir Mesa de Regalos?', sectionToggles.showPresents)
+        sectionToggles.showConfirmation = await askConfirm('   -> Â¿Incluir ConfirmaciÃ³n de Asistencia / WhatsApp?', sectionToggles.showConfirmation)
+        sectionToggles.showRsvp = await askConfirm('   -> Â¿Incluir MÃ³dulo RSVP / Pases de Boletos?', sectionToggles.showRsvp)
     }
 
     // 4. Captura de Datos del Evento (Adaptativo)
-    console.log('\n📝 4. Captura de Datos del Evento:')
-    let promptNamesDefault = 'María & Carlos'
-    if (eventType === 'xv') promptNamesDefault = 'Sofía Guadalupe'
-    else if (eventType === 'graduation') promptNamesDefault = 'Ingeniería en Sistemas 2022-2026'
-    else if (eventType === 'kids') promptNamesDefault = 'Mateo - 5º Cumpleaños'
+    console.log('\nðŸ“ 4. Captura de Datos del Evento:')
+    let promptNamesDefault = 'MarÃ­a & Carlos'
+    if (eventType === 'xv') promptNamesDefault = 'SofÃ­a Guadalupe'
+    else if (eventType === 'graduation') promptNamesDefault = 'IngenierÃ­a en Sistemas 2022-2026'
+    else if (eventType === 'kids') promptNamesDefault = 'Mateo - 5Âº CumpleaÃ±os'
 
     const names = await ask(`   -> Nombre de novios / festejado / carrera`, promptNamesDefault)
 
     const eventDate = await ask('   -> Fecha del evento principal (YYYY-MM-DD)', '2026-11-20')
     const mainTime = await ask('   -> Hora del evento principal', '17:00 HRS')
 
-    // Ubicaciones interactivas (Múltiples ubicaciones)
+    // Ubicaciones interactivas (MÃºltiples ubicaciones)
     const locationItems = []
     if (sectionToggles.showPlaces) {
-        console.log('\n📍 Configuración de Ubicaciones:')
+        console.log('\nðŸ“ ConfiguraciÃ³n de Ubicaciones:')
         console.log('   (Agrega las ubicaciones que necesites. Escribe -1 en cualquiera de las respuestas para terminar)\n')
 
         let locCount = 1
         let keepAdding = true
 
         while (keepAdding) {
-            console.log(`   --- Ubicación #${locCount} ---`)
-            const defaultTitle = locCount === 1 ? 'Ceremonia / Misa' : (locCount === 2 ? 'Recepción / Fiesta' : `Ubicación ${locCount}`)
+            console.log(`   --- UbicaciÃ³n #${locCount} ---`)
+            const defaultTitle = locCount === 1 ? 'Ceremonia / Misa' : (locCount === 2 ? 'RecepciÃ³n / Fiesta' : `UbicaciÃ³n ${locCount}`)
             const nameInput = await ask(`   -> Nombre de Ubicacion ${locCount}`, defaultTitle)
 
             if (nameInput === '-1') {
@@ -198,7 +198,7 @@ async function main() {
                 break
             }
 
-            const addressInput = await ask(`   -> Direccion de ubicacion ${locCount}`, 'Salón Los Pinos, Av. Reforma 123')
+            const addressInput = await ask(`   -> Direccion de ubicacion ${locCount}`, 'SalÃ³n Los Pinos, Av. Reforma 123')
             if (addressInput === '-1') {
                 keepAdding = false
                 break
@@ -229,8 +229,8 @@ async function main() {
 
         if (locationItems.length === 0) {
             locationItems.push({
-                title: 'Recepción & Evento Principal',
-                location: 'Salón Los Pinos, Av. Reforma 123',
+                title: 'RecepciÃ³n & Evento Principal',
+                location: 'SalÃ³n Los Pinos, Av. Reforma 123',
                 url: 'https://maps.google.com',
                 time: mainTime,
                 date: eventDate,
@@ -241,8 +241,8 @@ async function main() {
     // Itinerario interactivo
     const itineraryItems = []
     if (sectionToggles.showItinerary) {
-        console.log('\n   -> Configuración del Itinerario:')
-        console.log('      (Escribe -1 en la hora cuando termines de agregar ítems)')
+        console.log('\n   -> ConfiguraciÃ³n del Itinerario:')
+        console.log('      (Escribe -1 en la hora cuando termines de agregar Ã­tems)')
 
         let keepAdding = true
         while (keepAdding) {
@@ -256,12 +256,12 @@ async function main() {
                 break
             }
 
-            const eventTitle = await ask(`      -> Descripción para ${timeInput}`, 'Recepción & Evento')
+            const eventTitle = await ask(`      -> DescripciÃ³n para ${timeInput}`, 'RecepciÃ³n & Evento')
             itineraryItems.push({ time: timeInput, event: eventTitle })
         }
 
         if (itineraryItems.length === 0) {
-            itineraryItems.push({ time: mainTime, event: 'Recepción & Evento Principal' })
+            itineraryItems.push({ time: mainTime, event: 'RecepciÃ³n & Evento Principal' })
         }
     }
 
@@ -269,24 +269,24 @@ async function main() {
     let presentsTitle = 'Mesa de Regalos Liverpool'
     let presentsUrl = 'https://mesaderegalos.liverpool.com.mx'
     if (sectionToggles.showPresents) {
-        presentsTitle = await ask('   -> Título / Modalidad de Regalos (ej. Lluvia de Sobres / Liverpool)', 'Mesa de Regalos Liverpool')
+        presentsTitle = await ask('   -> TÃ­tulo / Modalidad de Regalos (ej. Lluvia de Sobres / Liverpool)', 'Mesa de Regalos Liverpool')
         presentsUrl = await ask('   -> Link de Mesa de Regalos / Datos bancarios', 'https://mesaderegalos.liverpool.com.mx')
     }
 
     // 5. Estilo de Tema y Fuentes
-    console.log('\n🎨 5. Personalización Visual del Tema:')
+    console.log('\nðŸŽ¨ 5. PersonalizaciÃ³n Visual del Tema:')
     const palette = await askSelect('Paleta de Colores a usar:', [
-        { label: 'Paleta 1: Dusty Rose & Deep Plum 🌸', value: 1 },
-        { label: 'Paleta 2: Crimson Wine & Warm Gold 🍷', value: 2 },
-        { label: 'Paleta 3: Olive Sage & Warm Taupe 🌿', value: 3 },
-        { label: 'Paleta 4: Forest Green & Powder Pink 🌲', value: 4 },
-        { label: 'Paleta 5: Soft Blue & Steel Blue 🌊', value: 5 },
-        { label: 'Paleta 6: Slate Teal & Mint 🍃', value: 6 },
-        { label: 'Paleta 7: Fresh Lime & Olive 🍋', value: 7 },
-        { label: 'Paleta 8: Warm Gold & Terracotta 🏆', value: 8 },
+        { label: 'Paleta 1: Dusty Rose & Deep Plum ðŸŒ¸', value: 1 },
+        { label: 'Paleta 2: Crimson Wine & Warm Gold ðŸ·', value: 2 },
+        { label: 'Paleta 3: Olive Sage & Warm Taupe ðŸŒ¿', value: 3 },
+        { label: 'Paleta 4: Forest Green & Powder Pink ðŸŒ²', value: 4 },
+        { label: 'Paleta 5: Soft Blue & Steel Blue ðŸŒŠ', value: 5 },
+        { label: 'Paleta 6: Slate Teal & Mint ðŸƒ', value: 6 },
+        { label: 'Paleta 7: Fresh Lime & Olive ðŸ‹', value: 7 },
+        { label: 'Paleta 8: Warm Gold & Terracotta ðŸ†', value: 8 },
     ])
 
-    const fontPack = await askSelect('Estilo de Tipografía (Font Pack):', [
+    const fontPack = await askSelect('Estilo de TipografÃ­a (Font Pack):', [
         { label: 'Pack 1: Alex Brush + Cormorant Garamond + Montserrat', value: 1 },
         { label: 'Pack 2: Pinyon Script + Bodoni Moda + Plus Jakarta Sans', value: 2 },
         { label: 'Pack 3: Greating + EB Garamond + Open Sans', value: 3 },
@@ -297,7 +297,7 @@ async function main() {
     rl.close()
 
     console.log('\n===================================================================')
-    console.log(' ⏳ CREANDO PROYECTO Y COMPILANDO ARCHIVO DE CONFIGURACIÓN...')
+    console.log(' â³ CREANDO PROYECTO Y COMPILANDO ARCHIVO DE CONFIGURACIÃ“N...')
     console.log('===================================================================\n')
 
     // Formatear ISO date para cuenta regresiva
@@ -323,8 +323,8 @@ async function main() {
                 show: hasMusic,
                 variant: 'floating',
                 buttonVariant: 'primary',
-                songTitle: 'Música de fondo',
-                artistName: 'Música del evento',
+                songTitle: 'MÃºsica de fondo',
+                artistName: 'MÃºsica del evento',
             },
         },
         config: {
@@ -343,7 +343,7 @@ async function main() {
             },
             message: {
                 showMessage: sectionToggles.showMessage,
-                message: 'Te invitamos de corazón a acompañarnos a compartir la alegría de este día inolvidable.',
+                message: 'Te invitamos de corazÃ³n a acompaÃ±arnos a compartir la alegrÃ­a de este dÃ­a inolvidable.',
             },
             countdown: {
                 showCountdown: sectionToggles.showCountdown,
@@ -365,7 +365,7 @@ async function main() {
             },
             dressCode: {
                 showDressCode: sectionToggles.showDressCode,
-                title: 'Código de Vestimenta',
+                title: 'CÃ³digo de Vestimenta',
                 description: 'Te sugerimos vestir de etiqueta semi-formal.',
                 attire: {
                     men: 'Traje oscuro y corbata.',
@@ -381,7 +381,7 @@ async function main() {
             },
             gallery: {
                 showGallery: sectionToggles.showGallery,
-                title: 'Galería de Fotos',
+                title: 'GalerÃ­a de Fotos',
                 images: [],
             },
             presents: {
@@ -416,10 +416,10 @@ async function main() {
     fs.writeFileSync(envPath, envContent, 'utf-8')
     fs.writeFileSync(envTemplatePath, envTemplateContent, 'utf-8')
 
-    console.log('✅ Archivo invitation.config.json generado exitosamente.')
+    console.log('âœ… Archivo invitation.config.json generado exitosamente.')
 
-    // 6. Optimización Modular: Eliminación de archivos no utilizados y reescritura de Invitation.tsx y app.scss
-    console.log('🧹 Optimizando componentes, estilos y hooks según secciones seleccionadas...')
+    // 6. OptimizaciÃ³n Modular: EliminaciÃ³n de archivos no utilizados y reescritura de Invitation.tsx y app.scss
+    console.log('ðŸ§¹ Optimizando componentes, estilos y hooks segÃºn secciones seleccionadas...')
 
     const SECTIONS_METADATA = [
         { key: 'showHero', folder: 'hero', component: 'HeroSection', importPath: './hero/HeroSection', scss: '../../modules/invitation/hero/hero' },
@@ -444,7 +444,7 @@ async function main() {
         }
     }
 
-    // A) Eliminar físicamente carpetas de secciones no seleccionadas
+    // A) Eliminar fÃ­sicamente carpetas de secciones no seleccionadas
     for (const item of SECTIONS_METADATA) {
         const isEnabled = sectionToggles[item.key]
         if (!isEnabled) {
@@ -458,27 +458,27 @@ async function main() {
         }
     }
 
-    // B) Eliminar sistema de boletos/búsqueda si no es necesario
+    // B) Eliminar sistema de boletos/bÃºsqueda si no es necesario
     if (!hasTicketingSystem) {
         removePathSync(path.join(targetPath, 'src', 'modules', 'search'))
         removePathSync(path.join(targetPath, 'src', 'modules', 'ticket'))
         removePathSync(path.join(targetPath, 'src', 'common', 'hooks', 'useTicket.ts'))
 
         const modulesIndexPath = path.join(targetPath, 'src', 'modules', 'index.ts')
-        const modulesIndexContent = `export { Envelop } from './envelop/Envelop'\nexport { Invitation } from './invitation/Invitation'\n`
+        const modulesIndexContent = `export { envelopee } from './envelopee/envelopee'\nexport { Invitation } from './invitation/Invitation'\n`
         fs.writeFileSync(modulesIndexPath, modulesIndexContent, 'utf-8')
 
         const routerAppPath = path.join(targetPath, 'src', 'router', 'RouterApp.tsx')
         const routerAppContent = `import React from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-import { Envelop, Invitation } from '@/modules'
+import { envelopee, Invitation } from '@/modules'
 
 export const RouterApp: React.FC = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Invitation />} />
-                <Route path="/envelop" element={<Envelop />} />
+                <Route path="/envelopee" element={<envelopee />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </BrowserRouter>
@@ -501,7 +501,7 @@ export const RouterApp: React.FC = () => {
         fs.writeFileSync(hooksIndexPath, hooksIndexContent, 'utf-8')
     }
 
-    // D) Reescritura dinámica de src/modules/invitation/Invitation.tsx
+    // D) Reescritura dinÃ¡mica de src/modules/invitation/Invitation.tsx
     const activeSections = SECTIONS_METADATA.filter(sec => sectionToggles[sec.key])
     const importsCode = activeSections
         .map(sec => `import { ${sec.component} } from '${sec.importPath}'`)
@@ -550,7 +550,7 @@ ${jsxElements.join('\n')}
     const invitationFilePath = path.join(targetPath, 'src', 'modules', 'invitation', 'Invitation.tsx')
     fs.writeFileSync(invitationFilePath, invitationContent, 'utf-8')
 
-    // E) Reescritura dinámica de src/common/styles/app.scss
+    // E) Reescritura dinÃ¡mica de src/common/styles/app.scss
     const scssImports = activeSections
         .map(sec => `@use '${sec.scss}';`)
         .join('\n')
@@ -582,27 +582,27 @@ ${jsxElements.join('\n')}
 // Invitation Module Sections
 ${scssImports}
 
-// Invitation Envelop
-@use '../../modules/envelop/_envelop.scss';${ticketingScss}
+// Invitation envelopee
+@use '../../modules/envelopee/_envelopee.scss';${ticketingScss}
 `
     const appScssPath = path.join(targetPath, 'src', 'common', 'styles', 'app.scss')
     fs.writeFileSync(appScssPath, appScssContent, 'utf-8')
 
-    console.log('✅ Optimización de código completada: Secciones deshabilitadas eliminadas del bundle.')
+    console.log('âœ… OptimizaciÃ³n de cÃ³digo completada: Secciones deshabilitadas eliminadas del bundle.')
 
     // Sincronizar tokens SCSS
     try {
-        console.log('🎨 Compilando tokens SCSS del tema en la nueva invitación...')
+        console.log('ðŸŽ¨ Compilando tokens SCSS del tema en la nueva invitaciÃ³n...')
         execSync('node scripts/sync-theme.js', { cwd: targetPath, stdio: 'inherit' })
     } catch (e) {
-        console.warn('⚠️ Nota: Recuerda ejecutar npm run theme:sync en la carpeta generada si es necesario.')
+        console.warn('âš ï¸ Nota: Recuerda ejecutar npm run theme:sync en la carpeta generada si es necesario.')
     }
 
     console.log('\n===================================================================')
-    console.log(' 🎉 ¡PROYECTO DE INVITACIÓN CREADO Y CONFIGURADO CON ÉXITO! 🎉')
+    console.log(' ðŸŽ‰ Â¡PROYECTO DE INVITACIÃ“N CREADO Y CONFIGURADO CON Ã‰XITO! ðŸŽ‰')
     console.log('===================================================================\n')
-    console.log(`📌 Tipo de Evento: ${eventType.toUpperCase()} (${packageTier})`)
-    console.log(`📌 Ubicación: ${targetPath}\n`)
+    console.log(`ðŸ“Œ Tipo de Evento: ${eventType.toUpperCase()} (${packageTier})`)
+    console.log(`ðŸ“Œ UbicaciÃ³n: ${targetPath}\n`)
     console.log('Para iniciar el proyecto ejecuta:\n')
     console.log(`   cd "${targetPath}"`)
     console.log('   npm install')
@@ -610,3 +610,4 @@ ${scssImports}
 }
 
 main().catch(console.error)
+

@@ -1,4 +1,4 @@
-﻿@use './palettes';
+@use './palettes';
 @use './fonts';
 @use './mixins';
 @use './variables';
@@ -35,8 +35,8 @@
 @use '../../modules/invitation/rsvp/rsvp';
 @use '../../modules/invitation/farewell/farewell';
 
-// Invitation Envelop
-@use '../../modules/envelop/_envelop.scss';
+// Invitation envelope
+@use '../../modules/envelopee/_envelopee.scss';
 
 // Invitation Search & Ticket
 @use '../../modules/search/search';
@@ -50,3 +50,5 @@
 @use '../../modules/invitation/addons/guest-photos/guest-photos';
 @use '../../modules/invitation/addons/monogram/monogram';
 @use '../../modules/invitation/addons/scratch-card/scratch-card';
+
+
