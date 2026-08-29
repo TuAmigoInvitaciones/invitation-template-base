@@ -1,5 +1,5 @@
-export interface envelopeConfig {
-    showenvelopee?: boolean
+export interface EnvelopeConfig {
+    showEnvelope?: boolean
     type?: 'cerrado-abierto' | 'video-apertura' | 'animacion-apertura'
     [key: string]: unknown
 }
@@ -143,6 +143,8 @@ export interface AddonsConfig {
 }
 
 export interface SectionsConfig {
+    envelop?: EnvelopeConfig
+    envelope?: EnvelopeConfig
     hero?: SectionItemConfig & { showHero?: boolean; names?: string; subtitle?: string; date?: string }
     scratchReveal?: ScratchRevealConfig
     message?: SectionItemConfig & { showMessage?: boolean; message?: string }
@@ -184,7 +186,7 @@ export interface SectionsConfig {
             clabe?: string
             account?: string
         }
-        envelopeeRain?: boolean
+        envelopeRain?: boolean
     }
 
     confirmation?: ConfirmationSectionConfig
@@ -202,4 +204,3 @@ export interface InvitationConfigState {
     config: Record<string, boolean>
     sections: SectionsConfig
 }
-
