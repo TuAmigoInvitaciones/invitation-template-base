@@ -1,17 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
+import { useTicket } from '@/common/hooks'
+
 import { TicketHeader } from './components/TicketHeader'
 import { TicketBody } from './components/TicketBody'
 import { TicketFooter } from './components/TicketFooter'
 import { TicketTableSection } from './components/TicketTableSection'
 import { TicketNotice } from './components/TicketNotice'
-import { useTicket } from '@/common/hooks'
+
 import './_ticket.scss'
 
 export const Ticket: React.FC = () => {
-    const { ticket, onCheckInitialData, onGetTicket, getStoredTicket } = useTicket()
+    const { ticket, onCheckInitialData, onGetTicket } = useTicket()
+    const hasFetchedRef = useRef(false)
 
     useEffect(() => {
-        const currentTicket = ticket || getStoredTicket()
+        if (hasFetchedRef.current) return
+        hasFetchedRef.current = true
+
+        const storedTicketStr = localStorage.getItem('abrasa-ticket')
+        const currentTicket = ticket || (storedTicketStr ? JSON.parse(storedTicketStr) : null)
 
         if (currentTicket?.keyPass) {
             onGetTicket(currentTicket.keyPass)
@@ -19,7 +26,7 @@ export const Ticket: React.FC = () => {
             onCheckInitialData()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [onGetTicket, onCheckInitialData, getStoredTicket])
+    }, [onGetTicket, onCheckInitialData])
 
     return (
         <div className="ticket">

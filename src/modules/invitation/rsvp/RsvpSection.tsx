@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTicket, useInvitationConfig } from '@/common/hooks'
 import { LinkIcon } from '@phosphor-icons/react'
+import { Button } from '@/common/components/button/Button'
 
 export const RsvpSection: React.FC = () => {
     const navigate = useNavigate()
@@ -25,14 +26,14 @@ export const RsvpSection: React.FC = () => {
                     {guestName && <h2 className="rsvp__guest-name">{guestName}</h2>}
 
                     <div className="rsvp__action">
-                        <button
-                            type="button"
+                        <Button
+                            variant="secondary"
                             className="rsvp__ticket-btn"
                             onClick={() => navigate('/ticket')}
                         >
                             <LinkIcon size={20} className="rsvp__ticket-btn-icon" />
                             <span>Ver mis boletos</span>
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>

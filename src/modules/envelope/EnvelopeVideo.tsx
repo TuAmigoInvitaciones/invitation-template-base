@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 import { useNavigation, useMusicPlayer } from '@/common/hooks'
-import envelopVideo from '@/assets/videos/envelop-video.mp4'
 
 export const EnvelopeVideo: React.FC = () => {
     const videoRef = useRef<HTMLVideoElement>(null)
@@ -45,7 +44,7 @@ export const EnvelopeVideo: React.FC = () => {
         >
             <video
                 ref={videoRef}
-                src={envelopVideo}
+                src={''}
                 playsInline
                 {...{ 'webkit-playsinline': 'true' }}
                 controls={false}

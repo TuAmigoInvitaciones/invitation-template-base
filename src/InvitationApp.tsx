@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -15,6 +15,7 @@ const InvitationAppContent: React.FC = () => {
   return (
     <BrowserRouter>
       <RouterApp />
+
       <ModalMaster />
       <DrawerMaster />
       <ToastContainer />

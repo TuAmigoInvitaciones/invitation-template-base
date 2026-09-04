@@ -27,7 +27,7 @@
     }
   },
   "config": {
-    "hasTicketingSystem": false,
+    "hasTicketingSystem": true,
     "hasRSVP": true,
     "hasMusic": true,
     "hasMenu": true

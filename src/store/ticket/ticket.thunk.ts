@@ -1,4 +1,4 @@
-﻿import type { AppDispatch } from "../store";
+import type { AppDispatch } from "../store";
 import { toast } from "sonner";
 
 import { setIsLoading, setTicket } from "./ticket.slice"
