@@ -14,14 +14,12 @@ export const DressCodeSection: React.FC = () => {
         <section id="dress-code" className="dress-code-section">
             <div className="dress-code-section__container">
                 <SectionHeader
-                    pretitle="CÓDIGO DE VESTIMENTA"
+                    pretitle="Código de Vestimenta"
                     title={dressCodeConfig.title || 'Dress Code'}
                     align="center"
-                    variant="uppercase"
                 />
 
                 <div className="dress-code-section__content">
-                    {/* Contenedor preparado para vestimenta, colores sugeridos y prendas a evitar */}
                 </div>
             </div>
         </section>

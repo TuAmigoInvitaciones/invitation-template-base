@@ -90,9 +90,9 @@ async function main() {
                 hasMenu: themeAndUi.ui.menu.show,
             },
             sections: {
-                envelopee: {
-                    showenvelopee: true,
-                    type: themeAndUi.envelopeeType || 'cerrado-abierto',
+                envelope: {
+                    showenvelope: true,
+                    type: themeAndUi.envelopeType || 'cerrado-abierto',
                 },
                 hero: heroData.hero,
                 scratchReveal: {

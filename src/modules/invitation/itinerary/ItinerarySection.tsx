@@ -14,14 +14,13 @@ export const ItinerarySection: React.FC = () => {
         <section id="itinerary" className="itinerary-section">
             <div className="itinerary-section__container">
                 <SectionHeader
-                    pretitle="CRONOGRAMA"
+                    pretitle="Cronograma"
                     title="Itinerario del Evento"
                     align="center"
-                    variant="uppercase"
                 />
 
                 <div className="itinerary-section__content">
-                    {/* Contenedor preparado para listar amenidades y horarios */}
+                    Itinerario
                 </div>
             </div>
         </section>

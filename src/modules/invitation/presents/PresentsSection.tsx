@@ -14,14 +14,14 @@ export const PresentsSection: React.FC = () => {
         <section id="presents" className="presents-section">
             <div className="presents-section__container">
                 <SectionHeader
-                    pretitle="SUGERENCIA DE REGALOS"
+                    pretitle="Sugerencia de Regalos"
                     title={presentsConfig.title || 'Mesa de Regalos'}
                     align="center"
                     variant="uppercase"
                 />
 
                 <div className="presents-section__content">
-                    {/* Contenedor preparado para mesa de regalos, lluvia de sobres o transferencia */}
+                    Regalos
                 </div>
             </div>
         </section>

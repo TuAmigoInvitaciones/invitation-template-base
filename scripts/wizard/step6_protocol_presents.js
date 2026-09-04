@@ -92,14 +92,14 @@ export async function promptProtocolAndPresents(showDressCodeDefault = true, sho
             bankDetails = { bank, holder, clabe, account }
         }
 
-        const envelopeeeRain = await askConfirm('      -> Â¿Mencionar modalidad de Lluvia de Sobres?', true)
+        const envelopeRain = await askConfirm('      -> Â¿Mencionar modalidad de Lluvia de Sobres?', true)
 
         presentsData = {
             showPresents: true,
             title,
             url,
             bankDetails,
-            envelopeeeRain,
+            envelopeRain,
         }
     }
 

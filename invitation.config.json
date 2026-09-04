@@ -16,7 +16,7 @@
     "menu": {
       "show": true,
       "variant": "bar",
-      "title": "Grethel Stefania",
+      "title": "Nombre Personalizado",
       "buttonVariant": "icon"
     },
     "music": {
@@ -39,7 +39,7 @@
     },
     "hero": {
       "showHero": true,
-      "names": "Grethel Stefania",
+      "names": "Nombre Personalizado",
       "subtitle": "Mis XV Años",
       "date": "18 DE DICIEMBRE DE 2026",
       "city": "Aguascalientes, México"
@@ -60,12 +60,12 @@
       "showFamily": true,
       "title": "Mis Padres y Padrinos",
       "parents": [
-        "Francisco Javier Nava Trinidad",
-        "Yesenia Ortega Ortíz"
+        "Nombre Personalizado 1",
+        "Nombre Personalizado 2"
       ],
       "godparents": [
-        "Rosa Trinidad Carmona",
-        "Rosa Ma.Ortíz Saucedo"
+        "Nombre Personalizado 3",
+        "Nombre Personalizado 4"
       ]
     },
     "places": {
@@ -151,9 +151,8 @@
       "noKidsMessage": "Aunque amamos a los pequeños, la recepción es solo para adultos.",
       "punctuality": true,
       "punctualityMessage": "Te pedimos ser puntual para no perderte ningún momento especial de la celebración.",
-      "hashtag": "#GrethelStefaniaXV"
+      "hashtag": "#NombrePersonalizadoEvento"
     },
-
     "presents": {
       "showPresents": true,
       "title": "Mesa de Regalos",
@@ -215,16 +214,14 @@
         "title": "Música & Fotos de Invitados",
         "qrAlbumUrl": "https://photos.app.goo.gl/xqUqNJ5Cvm9mjo7m8"
       },
-
       "monogram": {
         "showMonogram": true,
         "title": "Monograma del Evento"
       }
     },
-
     "farewell": {
       "showFarewell": true,
-      "hashtag": "#GrethelStefaniaXV",
+      "hashtag": "#NombrePersonalizadoEvento",
       "thankYouMessage": "Gracias por ser parte fundamental en mi vida y acompañarme en este día tan especial."
     }
   }

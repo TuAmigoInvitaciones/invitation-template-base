@@ -12,7 +12,6 @@ export const MonogramSection: React.FC = () => {
     return (
         <section id="monogram" className="monogram-section">
             <div className="monogram-section__container">
-                {/* Skeleton vacio para maquetacion futura */}
             </div>
         </section>
     )

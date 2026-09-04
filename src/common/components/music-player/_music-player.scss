@@ -82,9 +82,6 @@
         }
     }
 
-    // ----------------------------------------------------------------------
-    // Ecualizador Animado
-    // ----------------------------------------------------------------------
     &__equalizer {
         display: flex;
         align-items: flex-end;
@@ -110,15 +107,5 @@
                 animation-delay: 0.6s;
             }
         }
-    }
-}
-
-@keyframes eqBar {
-    0% {
-        height: 3px;
-    }
-
-    100% {
-        height: 12px;
     }
 }

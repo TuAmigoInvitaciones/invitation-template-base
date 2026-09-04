@@ -8,11 +8,10 @@ import { useTicket } from '@/common/hooks'
 import './_ticket.scss'
 
 export const Ticket: React.FC = () => {
-    const { ticket, onGetTicket, onCheckInitialData } = useTicket()
+    const { ticket, onCheckInitialData, onGetTicket, getStoredTicket } = useTicket()
 
     useEffect(() => {
-        const storedTicketStr = localStorage.getItem('abrasa-ticket')
-        const currentTicket = ticket || (storedTicketStr ? JSON.parse(storedTicketStr) : null)
+        const currentTicket = ticket || getStoredTicket()
 
         if (currentTicket?.keyPass) {
             onGetTicket(currentTicket.keyPass)
@@ -20,7 +19,7 @@ export const Ticket: React.FC = () => {
             onCheckInitialData()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [onGetTicket, onCheckInitialData])
+    }, [onGetTicket, onCheckInitialData, getStoredTicket])
 
     return (
         <div className="ticket">

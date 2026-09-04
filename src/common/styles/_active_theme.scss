@@ -6,14 +6,14 @@
 @use './fonts' as font;
 @use './palettes' as pal;
 
-// Active Font Pack: Pack 4
-$font-cursive: font.$font-p4-cursive;
-$font-serif: font.$font-p4-serif;
-$font-sans: font.$font-p4-sans;
+// Active Font Pack: Pack 5
+$font-cursive: font.$font-p5-cursive;
+$font-serif: font.$font-p5-serif;
+$font-sans: font.$font-p5-sans;
 
-// Active Palette: Palette 2
-$color-1: pal.$palette-2-c1;
-$color-2: pal.$palette-2-c2;
-$color-3: pal.$palette-2-c3;
-$color-4: pal.$palette-2-c4;
-$color-5: pal.$palette-2-c5;
+// Active Palette: Palette 4
+$color-1: pal.$palette-4-c1;
+$color-2: pal.$palette-4-c2;
+$color-3: pal.$palette-4-c3;
+$color-4: pal.$palette-4-c4;
+$color-5: pal.$palette-4-c5;

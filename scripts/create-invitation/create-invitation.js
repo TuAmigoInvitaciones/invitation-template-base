@@ -465,20 +465,20 @@ async function main() {
         removePathSync(path.join(targetPath, 'src', 'common', 'hooks', 'useTicket.ts'))
 
         const modulesIndexPath = path.join(targetPath, 'src', 'modules', 'index.ts')
-        const modulesIndexContent = `export { envelopee } from './envelopee/envelopee'\nexport { Invitation } from './invitation/Invitation'\n`
+        const modulesIndexContent = `export { Envelope } from './envelope/Envelope'\nexport { Invitation } from './invitation/Invitation'\n`
         fs.writeFileSync(modulesIndexPath, modulesIndexContent, 'utf-8')
 
         const routerAppPath = path.join(targetPath, 'src', 'router', 'RouterApp.tsx')
         const routerAppContent = `import React from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-import { envelopee, Invitation } from '@/modules'
+import { Envelope, Invitation } from '@/modules'
 
 export const RouterApp: React.FC = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Invitation />} />
-                <Route path="/envelopee" element={<envelopee />} />
+                <Route path="/envelope" element={<Envelope />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </BrowserRouter>
@@ -582,8 +582,8 @@ ${jsxElements.join('\n')}
 // Invitation Module Sections
 ${scssImports}
 
-// Invitation envelopee
-@use '../../modules/envelopee/_envelopee.scss';${ticketingScss}
+// Invitation envelope
+@use '../../modules/envelope/envelope';${ticketingScss}
 `
     const appScssPath = path.join(targetPath, 'src', 'common', 'styles', 'app.scss')
     fs.writeFileSync(appScssPath, appScssContent, 'utf-8')

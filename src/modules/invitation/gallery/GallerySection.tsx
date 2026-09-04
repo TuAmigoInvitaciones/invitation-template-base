@@ -14,14 +14,13 @@ export const GallerySection: React.FC = () => {
         <section id="gallery" className="gallery-section">
             <div className="gallery-section__container">
                 <SectionHeader
-                    pretitle="MOMENTOS ESPECIALES"
+                    pretitle="Momentos Especiales"
                     title="Galería de Fotos"
                     align="center"
-                    variant="uppercase"
                 />
 
                 <div className="gallery-section__content">
-                    {/* Contenedor preparado para slider, collage o mosaico de fotos */}
+                    Galería
                 </div>
             </div>
         </section>

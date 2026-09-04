@@ -161,7 +161,6 @@ export const Particles: React.FC<ParticlesProps> = ({
                 p.y += p.speedY
                 p.rotation += p.rotationSpeed
 
-                // Rapid glitter opacity pulse (twinkle)
                 p.opacity += p.opacitySpeed
                 if (p.opacity >= 1.0 || p.opacity <= 0.15) {
                     p.opacitySpeed = -p.opacitySpeed

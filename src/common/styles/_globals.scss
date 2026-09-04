@@ -84,19 +84,16 @@ table {
     }
 }
 
-/* Invitation Layout Modifiers */
 .invitation {
-    max-width: 96rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2rem 1.6rem 6rem;
+    width: 95%;
+    max-width: 150rem;
+    margin: 0 auto;
 
     &--has-menu-bar {
-        margin-top: calc(vars.$menu-bar-height + 1rem);
+        margin-top: vars.$menu-bar-height;
     }
 }
 
-/* Utilities */
 .my-2 {
     margin: 2rem 0;
 }

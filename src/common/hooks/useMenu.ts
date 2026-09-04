@@ -10,10 +10,10 @@ const SECTION_DEFAULTS: Record<string, { label: string; href: string }> = {
     hero: { label: 'Inicio', href: '#hero' },
     message: { label: 'Mensaje', href: '#message' },
     countdown: { label: 'Cuenta Regresiva', href: '#countdown' },
-    places: { label: 'Ubicación', href: '#places' },
+    places: { label: 'UbicaciÃ³n', href: '#places' },
     itinerary: { label: 'Itinerario', href: '#itinerary' },
-    dressCode: { label: 'Código de Vestimenta', href: '#dress-code' },
-    gallery: { label: 'Galería', href: '#gallery' },
+    dressCode: { label: 'CÃ³digo de Vestimenta', href: '#dress-code' },
+    gallery: { label: 'GalerÃ­a', href: '#gallery' },
     presents: { label: 'Mesa de Regalos', href: '#presents' },
     confirmation: { label: 'Confirmar Asistencia', href: '#confirmation' },
 }
@@ -54,10 +54,10 @@ export const useMenu = (props?: MenuProps) => {
         }
     }
 
-    const isHiddenRoute = location.pathname === '/envelopee' || location.pathname === '/search'
+    const isHiddenRoute = location.pathname === '/envelope' || location.pathname === '/search'
     const isMenuVisible = (props?.show ?? menuConfig?.show ?? config?.hasMenu ?? true) && !isHiddenRoute && hasScrolledPast100vh
     const activeVariant: MenuVariant = props?.variant || menuConfig?.variant || 'floating'
-    const activeTitle = props?.title || menuConfig?.title || 'Menú'
+    const activeTitle = props?.title || menuConfig?.title || 'MenÃº'
     const activeBtnVariant: ButtonVariant = props?.buttonVariant || menuConfig?.buttonVariant || theme.buttonVariant || 'icon'
 
     const defaultItems: MenuItem[] = useMemo(() => {

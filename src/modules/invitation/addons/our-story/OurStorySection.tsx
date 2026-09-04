@@ -12,7 +12,6 @@ export const OurStorySection: React.FC = () => {
     return (
         <section id="our-story" className="our-story-section">
             <div className="our-story-section__container">
-                {/* Skeleton vacio para maquetacion futura */}
             </div>
         </section>
     )

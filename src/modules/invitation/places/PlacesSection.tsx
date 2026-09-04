@@ -4,6 +4,7 @@ import { useInvitationConfig } from '@/common/hooks'
 import { SectionHeader } from '@/common/components/section-header/SectionHeader'
 import { Button } from '@/common/components/button/Button'
 import { MapPinIcon } from '@phosphor-icons/react'
+import { Formatter } from '@/common/helpers/formatter'
 
 const FLUID_EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
@@ -18,20 +19,6 @@ export const PlacesSection: React.FC = () => {
 
     if (!placesConfig?.showPlaces || !placesConfig?.locations) {
         return null
-    }
-
-    const formatLocalDate = (dateStr?: string) => {
-        if (!dateStr) return ''
-        const [year, month, day] = dateStr.split('-').map(Number)
-        const dateObj = new Date(year, month - 1, day)
-
-        const options: Intl.DateTimeFormatOptions = {
-            weekday: 'long',
-            day: 'numeric',
-            month: 'long'
-        }
-        const formatted = dateObj.toLocaleDateString('es-ES', options)
-        return formatted.charAt(0).toUpperCase() + formatted.slice(1)
     }
 
     return (
@@ -51,6 +38,18 @@ export const PlacesSection: React.FC = () => {
                     />
                 </motion.div>
 
+                {placesConfig.locations[0].date && (
+                    <motion.p
+                        className="places-item__date"
+                        initial={{ opacity: 0, scale: 0.85 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true, margin: '-10% 0px' }}
+                        transition={{ duration: 0.8, delay: 0.5, ease: FLUID_EASE }}
+                    >
+                        {Formatter.formatLocalDate(placesConfig.locations[0].date)}
+                    </motion.p>
+                )}
+
                 <div className="places-section__grid">
                     {placesConfig.locations.map((loc, idx) => {
                         const variant = getCardVariant(idx)
@@ -63,18 +62,6 @@ export const PlacesSection: React.FC = () => {
                                 viewport={{ once: true, margin: '-10% 0px' }}
                                 transition={{ duration: 1.1, delay: 0.35 + idx * 0.22, ease: FLUID_EASE }}
                             >
-                                {loc.date && (
-                                    <motion.p
-                                        className="places-item__date"
-                                        initial={{ opacity: 0, scale: 0.85 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true, margin: '-10% 0px' }}
-                                        transition={{ duration: 0.8, delay: 0.5 + idx * 0.22, ease: FLUID_EASE }}
-                                    >
-                                        {formatLocalDate(loc.date)}
-                                    </motion.p>
-                                )}
-
                                 {loc.time && (
                                     <p className="places-item__time">{loc.time}</p>
                                 )}

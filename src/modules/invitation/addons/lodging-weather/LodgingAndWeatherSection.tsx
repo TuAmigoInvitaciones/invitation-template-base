@@ -12,7 +12,6 @@ export const LodgingAndWeatherSection: React.FC = () => {
     return (
         <section id="lodging-weather" className="lodging-weather-section">
             <div className="lodging-weather-section__container">
-                {/* Skeleton vacio para maquetacion futura */}
             </div>
         </section>
     )

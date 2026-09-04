@@ -26,8 +26,8 @@ export async function promptThemeAndUI(namesDefault = 'MarÃ­a & Carlos', hasMu
     ])
     const fontPack = parseInt(fontPackStr, 10) || 1
 
-    // 3. Variante de Sobre / Apertura (envelopee)
-    const envelopeeType = await askSelect('Variante del Sobre de Apertura (envelopee):', [
+    // 3. Variante de Sobre / Apertura (envelope)
+    const envelopeType = await askSelect('Variante del Sobre de Apertura (envelope):', [
         { label: 'Cerrado / Abierto Tradicional (cerrado-abierto)', value: 'cerrado-abierto' },
         { label: 'Video de Apertura (video-apertura)', value: 'video-apertura' },
         { label: 'AnimaciÃ³n de Apertura Premium (animacion-apertura)', value: 'animacion-apertura' },
@@ -57,7 +57,7 @@ export async function promptThemeAndUI(namesDefault = 'MarÃ­a & Carlos', hasMu
             fontPack,
             palette,
         },
-        envelopeeType,
+        envelopeType,
         ui: {
             menu: {
                 show: true,

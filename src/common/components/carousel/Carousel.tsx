@@ -77,10 +77,8 @@ export const Carousel: React.FC<CarouselProps> = ({
                 }
             >
 
-                {/* 1. Diapositivas Personalizadas */}
                 {children}
 
-                {/* 2. Lista de Items con CarouselCard */}
                 {!children && items.length > 0 &&
                     items.map((item, index) => (
                         <SwiperSlide key={index}>
@@ -89,7 +87,6 @@ export const Carousel: React.FC<CarouselProps> = ({
                     ))
                 }
 
-                {/* 3. Galería de Imágenes Pura */}
                 {!children && items.length === 0 && images.length > 0 &&
                     images.map((img, index) => (
                         <SwiperSlide key={index}>
@@ -103,7 +100,6 @@ export const Carousel: React.FC<CarouselProps> = ({
                 }
             </Swiper>
 
-            {/* Botones de Navegación Personalizados con Referencias de Estado React */}
             {showNavigation && (
                 <>
                     <button

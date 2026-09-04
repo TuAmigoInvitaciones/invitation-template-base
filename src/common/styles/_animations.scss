@@ -80,6 +80,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -90,6 +91,7 @@
         opacity: 0;
         transform: scale(0.95) translateY(8px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -201,7 +203,7 @@
 }
 
 // Apertura del sobre de invitación
-@keyframes openenvelopeeFlap {
+@keyframes openEnvelopeFlap {
     0% {
         transform: rotateX(0deg);
     }
@@ -229,7 +231,7 @@
     }
 
     50% {
-        transform: translate(-50%, -50%) scale(1.15);
+        transform: translate(-50%, -50%) scale(1.2);
         opacity: 0.3;
     }
 
@@ -281,6 +283,7 @@
 
 // Pulso de estrella de calendario
 @keyframes calendarStarPulse {
+
     0%,
     100% {
         transform: translate(-50%, -47%) scale(1);
@@ -293,6 +296,29 @@
     }
 }
 
+@keyframes eqBar {
+    0% {
+        height: 3px;
+    }
+
+    100% {
+        height: 12px;
+    }
+}
+
+@keyframes scratchHintPulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.92;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.06);
+        opacity: 1;
+    }
+}
 
 /* --------------------------------------------------------------------------
    4. SCSS Mixin para Aplicar Animaciones
@@ -360,6 +386,10 @@
 
 .animate-spin-slow {
     animation: rotateSlow 20s linear infinite;
+}
+
+.animate-pulse-seal-ring {
+    animation: pulseSealRing 2s infinite ease-in-out;
 }
 
 /* Delays escalonados para listas, cronogramas y tarjetas */

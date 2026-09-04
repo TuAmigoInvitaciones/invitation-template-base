@@ -32,7 +32,7 @@ export const SearchForm: React.FC = () => {
                 <input
                     {...register('keyPass', {
                         required: 'Por favor, ingresa tu clave de acceso',
-                        validate: (val) => (val && val.trim().length > 0) || 'Por favor, ingresa una clave de acceso válida',
+                        validate: (val) => (val && val.trim().length > 0) || 'Por favor, ingresa una clave de acceso vÃ¡lida',
                         minLength: { value: 4, message: 'La clave de acceso debe tener al menos 4 caracteres' },
                     })}
                     type="text"
@@ -55,10 +55,10 @@ export const SearchForm: React.FC = () => {
                     size="lg"
                     radius="full"
                     icon={<MagnifyingGlassIcon size={18} weight="bold" />}
-                    aria-label="Buscar invitación"
+                    aria-label="Buscar invitaciÃ³n"
                     isLoading={isLoading}
                 >
-                    BUSCAR INVITACIÓN
+                    BUSCAR INVITACIÃ“N
                 </Button>
             </div>
         </form>

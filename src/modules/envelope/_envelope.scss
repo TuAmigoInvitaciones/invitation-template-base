@@ -20,12 +20,18 @@
         padding: 0;
         gap: 0;
         background-color: #f6f5f3;
+        cursor: pointer;
+        overflow: hidden;
     }
 
     &__video {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        z-index: 1;
         display: block;
 
         &::-webkit-media-controls {
@@ -313,6 +319,14 @@
         z-index: 5;
         pointer-events: none;
         animation: pulseSealRing 2s infinite ease-in-out;
+
+        &--video {
+            width: 8rem;
+            height: 8rem;
+            border: 2px solid rgba(194, 159, 83, 0.4);
+            background-color: rgba(194, 159, 83, 0.05);
+            z-index: 2;
+        }
     }
 
     &__footer-text {

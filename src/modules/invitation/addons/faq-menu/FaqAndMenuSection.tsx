@@ -12,7 +12,7 @@ export const FaqAndMenuSection: React.FC = () => {
     return (
         <section id="faq-menu" className="faq-menu-section">
             <div className="faq-menu-section__container">
-                {/* Skeleton vacio para maquetacion futura */}
+
             </div>
         </section>
     )

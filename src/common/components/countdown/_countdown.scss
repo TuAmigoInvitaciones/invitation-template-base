@@ -50,8 +50,6 @@
         margin: 0 -0.4rem;
     }
 
-
-    /* 1. Variante Boxes (Cajas Rectangulares Clásicas) */
     &--boxes {
         .countdown__box {
             min-width: 6.8rem;
@@ -70,7 +68,6 @@
         }
     }
 
-    /* 2. Variante Circles (Círculos Elegantes) */
     &--circles {
         .countdown__box {
             width: 7.6rem;
@@ -91,7 +88,6 @@
         }
     }
 
-    /* 3. Variante Inline (Una Sola Línea Horizontal) */
     &--inline {
         .countdown__items {
             gap: 1.2rem;
@@ -114,7 +110,6 @@
         }
     }
 
-    /* 4. Variante Grid 2x2 (Cuadrícula Compacta) */
     &--grid-2x2 {
         .countdown__items {
             display: grid;
@@ -139,7 +134,6 @@
         }
     }
 
-    /* 5. Variante Minimal (Números Limpios con Separadores) */
     &--minimal {
         .countdown__items {
             gap: 1.6rem;
@@ -159,7 +153,6 @@
         }
     }
 
-    /* 6. Variante Cards (Tarjetas con Elevación y Sombras) */
     &--cards {
         .countdown__box {
             min-width: 7.2rem;

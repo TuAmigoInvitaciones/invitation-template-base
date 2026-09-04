@@ -17,11 +17,9 @@ export const ConfirmationSection: React.FC = () => {
         <section id="confirmation" className="confirmation-section">
             <div className="confirmation-section__container">
                 <SectionHeader
-                    pretitle="CONFIRMACIÓN DE ASISTENCIA"
+                    pretitle="Confirmación de Asistencia"
                     title="¿Nos Acompañas?"
-                    subtitle="Por favor confirma tu asistencia antes del evento para asegurar tu lugar"
                     align="center"
-                    variant="uppercase"
                 />
 
                 <div className="confirmation-section__content">

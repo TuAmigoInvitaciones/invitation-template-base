@@ -1,10 +1,5 @@
 @use './variables' as *;
 
-/* ==========================================================================
-   Font Imports (@font-face)
-   ========================================================================== */
-
-/* Pack 1 */
 @font-face {
     font-family: 'Alex Brush';
     src: url('../../assets/fonts/pack-1/AlexBrushFont.ttf') format('truetype');
@@ -29,7 +24,6 @@
     font-display: swap;
 }
 
-/* Pack 2 */
 @font-face {
     font-family: 'Pinyon Script';
     src: url('../../assets/fonts/pack-2/PinyonScriptFont.ttf') format('truetype');
@@ -54,7 +48,6 @@
     font-display: swap;
 }
 
-/* Pack 3 */
 @font-face {
     font-family: 'Greating';
     src: url('../../assets/fonts/pack-3/GreatingFont.ttf') format('truetype');
@@ -79,7 +72,6 @@
     font-display: swap;
 }
 
-/* Pack 4 */
 @font-face {
     font-family: 'Amsterdam Signature';
     src: url('../../assets/fonts/pack-4/AmsterdamSignatureFont.ttf') format('truetype');
@@ -104,7 +96,6 @@
     font-display: swap;
 }
 
-/* Pack 5 */
 @font-face {
     font-family: 'Halimunde Signature';
     src: url('../../assets/fonts/pack-5/HalimundeSignatureFont.otf') format('opentype');
@@ -128,10 +119,6 @@
     font-style: normal;
     font-display: swap;
 }
-
-/* ==========================================================================
-   Typography Base Styles
-   ========================================================================== */
 
 html {
     font-size: 62.5%;
@@ -206,15 +193,11 @@ select {
     letter-spacing: inherit;
 }
 
-/* ==========================================================================
-   Typography Helpers
-   ========================================================================== */
 
 .text-center {
     text-align: center;
 }
 
-/* Active Theme Font Helpers */
 .font-cursive {
     font-family: $font-cursive;
 }

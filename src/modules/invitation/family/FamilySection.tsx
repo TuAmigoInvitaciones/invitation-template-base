@@ -14,14 +14,12 @@ export const FamilySection: React.FC = () => {
         <section id="family" className="family-section">
             <div className="family-section__container">
                 <SectionHeader
-                    pretitle="CON LA BENDICIÓN DE NUESTROS PADRES"
-                    title="Nuestra Familia"
+                    pretitle="Con la Bendición de mis Padres"
+                    title="Mi Familia"
                     align="center"
-                    variant="uppercase"
                 />
 
                 <div className="family-section__content">
-                    {/* Contenedor preparado para maquetar la sección de familia/padrinos */}
                 </div>
             </div>
         </section>

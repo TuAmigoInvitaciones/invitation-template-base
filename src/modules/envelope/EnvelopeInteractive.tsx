@@ -1,10 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+
 import { useNavigation, useMusicPlayer } from '@/common/hooks'
 import { EnvelopeClosed } from './EnvelopeClosed'
 import { EnvelopeOpen } from './EnvelopeOpen'
-import grethelPhoto from '@/assets/images/photos/1.jpeg'
-import envelopFlowers from '@/assets/images/icons/envelop-flowers.svg'
 
 export const EnvelopeInteractive: React.FC = () => {
     const timeoutRef = useRef<number | null>(null)
@@ -63,10 +62,6 @@ export const EnvelopeInteractive: React.FC = () => {
                         >
                             <EnvelopeClosed />
                             <div className="envelope__indicator-ring" />
-
-                            <div className="envelope__flowers-corner">
-                                <img src={envelopFlowers} alt="Flores decorativas" className="envelope__flowers-corner-img" />
-                            </div>
                         </motion.div>
                     ) : (
                         <motion.div
@@ -93,10 +88,10 @@ export const EnvelopeInteractive: React.FC = () => {
                                     scale: { duration: 2.2, delay: 0.7, repeat: Infinity, ease: 'easeInOut' },
                                 }}
                             >
-                                <div className="envelope__polaroid-img-wrapper">
-                                    <img src={grethelPhoto} alt="Grethel Stefania" />
-                                </div>
-                                <p className="envelope__polaroid-caption">Grethel Stefania</p>
+                                {/* <div className="envelope__polaroid-img-wrapper">
+                                    <img src={photo} alt="Grethel Stefania" />
+                                </div> */}
+                                <p className="envelope__polaroid-caption">Nombre Personalizado</p>
                             </motion.div>
                         </motion.div>
                     )}
@@ -104,8 +99,8 @@ export const EnvelopeInteractive: React.FC = () => {
             </div>
 
             <div className="envelope__footer-text">
-                <p className="envelope__name">Grethel Stefania</p>
-                <p className="envelope__subtitle">¡Quiero invitarte a mis XV años!</p>
+                <p className="envelope__name">Nombre Personalizado</p>
+                <p className="envelope__subtitle">¡Quiero invitarte a mi Evento!</p>
             </div>
 
             {showFlash && (

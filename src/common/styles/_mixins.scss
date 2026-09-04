@@ -1,24 +1,13 @@
 @use 'sass:color';
 
-/* ==========================================================================
-   Functions - Dynamic Color Tints & Shades
-   ========================================================================== */
-
-/// Genera un tono más claro (tint) mezclando con blanco
 @function tint($color, $percentage) {
     @return color.mix(#ffffff, $color, $percentage);
 }
 
-/// Genera un tono más oscuro (shade) mezclando con negro
 @function shade($color, $percentage) {
     @return color.mix(#000000, $color, $percentage);
 }
 
-/* ==========================================================================
-   Mixins - Shared Component & Layout Utilities
-   ========================================================================== */
-
-/// 1. Gradient Fade Overlay (Top, Bottom, or Double)
 @mixin difuminatedGradient($color: #ffffff,
     $height: 25%,
     $positionY: 0,
@@ -53,7 +42,6 @@
     }
 }
 
-/// 2. Background Image Container Overlay
 @mixin backgroundImage($opacity: 0.1,
     $url: null,
     $size: cover,
@@ -74,7 +62,6 @@
     }
 }
 
-/// Flexbox Alignment Shortcut
 @mixin flexCenter($direction: row, $justify: center, $align: center, $gap: null) {
     display: flex;
     flex-direction: $direction;
@@ -86,7 +73,6 @@
     }
 }
 
-/// Absolute Center Positioning
 @mixin absoluteCenter {
     position: absolute;
     top: 50%;
@@ -94,7 +80,6 @@
     transform: translate(-50%, -50%);
 }
 
-/// Glassmorphism Effect
 @mixin glassmorphism($bgOpacity: 0.15,
     $blur: 10px,
     $borderColor: rgba(255, 255, 255, 0.2),
@@ -105,7 +90,6 @@
     border: 1px solid $borderColor;
 }
 
-/// Responsive Media Query Helper
 @mixin respondToMin($breakpoint) {
     @if $breakpoint =='sm' or $breakpoint ==576px {
         @media (min-width: 576px) {
@@ -144,7 +128,6 @@
     }
 }
 
-/// Text Truncation (Single or Multi-line)
 @mixin textTruncate($lines: 1) {
     @if $lines ==1 {
         white-space: nowrap;

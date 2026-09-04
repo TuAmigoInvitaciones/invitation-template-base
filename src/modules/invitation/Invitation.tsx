@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMenu, useInvitationConfig } from '@/common/hooks'
+import { useMenu } from '@/common/hooks'
 
 import { HeroSection } from './hero/HeroSection'
 import { ScratchCardSection } from './addons/scratch-card/ScratchCardSection'
@@ -24,35 +24,34 @@ import { FarewellSection } from './farewell/FarewellSection'
 
 export const Invitation: React.FC = () => {
     const { activeVariant, isMenuVisible } = useMenu()
-    const { config } = useInvitationConfig()
 
     const hasMenuBarClass = isMenuVisible && activeVariant === 'bar' ? 'invitation--has-menu-bar' : ''
     const containerClass = `invitation ${hasMenuBarClass}`.trim()
 
-    const showTicketSystem = Boolean(config?.hasTicketingSystem)
-
     return (
         <main className={containerClass}>
             <HeroSection />
-            <ScratchCardSection />
             <CountdownSection />
             <MessageSection />
-            <MonogramSection />
-            <OurStorySection />
-            {showTicketSystem && <RsvpSection />}
+            <RsvpSection />
             <FamilySection />
             <PlacesSection />
             <GraduatesSection />
-            <LodgingAndWeatherSection />
             <DressCodeSection />
             <ItinerarySection />
-            <FaqAndMenuSection />
             <DetailsSection />
             <GallerySection />
             <GuestPhotosSection />
             <PresentsSection />
             <ConfirmationSection />
             <FarewellSection />
+
+            {/* AddOns */}
+            <ScratchCardSection />
+            <MonogramSection />
+            <OurStorySection />
+            <LodgingAndWeatherSection />
+            <FaqAndMenuSection />
         </main>
     )
 }
